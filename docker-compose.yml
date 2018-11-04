@@ -1,4 +1,5 @@
 javavulnlab:
+  name: javavuln
   build: .
   ports:
     - 8080:8080
