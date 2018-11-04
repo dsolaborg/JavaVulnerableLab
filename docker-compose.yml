@@ -1,5 +1,5 @@
 javavulnlab:
-  name: javavuln
+  container_name: javavuln
   build: .
   ports:
     - 8080:8080
