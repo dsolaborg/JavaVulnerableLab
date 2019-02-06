@@ -1,0 +1,2023 @@
+// ************************************************************************
+// * Console Output from kj_dev_pipeline_java job #14 - successful build  *
+// ************************************************************************
+
+Started by user kjohnson@securitycompass.com
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] node
+Running on jenkins-slave in /home/jenkins/workspace/dev-sample-security/kj_dev_pipeline_java
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (build-container)
+[Pipeline] git
+using credential d07e0ae8-8656-469c-8675-2193ff67fde0
+Fetching changes from the remote Git repository
+Checking out Revision c5080d53e5da2b8e1823f2bd2b35842b04fbca92 (refs/remotes/origin/master)
+Commit message: "Update build.sh"
+[Pipeline] sh
++ sh build.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 1660k  100 1660k    0     0  1660k      0  0:00:01 --:--:--  0:00:01 22.8M
+ > git rev-parse --is-inside-work-tree # timeout=10
+ > git config remote.origin.url git@github.com:dsolaborg/JavaVulnerableLab.git # timeout=10
+Fetching upstream changes from git@github.com:dsolaborg/JavaVulnerableLab.git
+ > git --version # timeout=10
+using GIT_SSH to set credentials
+ > git fetch --tags --progress git@github.com:dsolaborg/JavaVulnerableLab.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f c5080d53e5da2b8e1823f2bd2b35842b04fbca92 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D master # timeout=10
+ > git checkout -b master c5080d53e5da2b8e1823f2bd2b35842b04fbca92 # timeout=10
+ > git rev-list --no-walk c5080d53e5da2b8e1823f2bd2b35842b04fbca92 # timeout=10
+DEPRECATION: Python 2.7 will reach the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 won't be maintained after that date. A future version of pip will drop support for Python 2.7.
+Collecting pip
+  Using cached https://files.pythonhosted.org/packages/46/dc/7fd5df840efb3e56c8b4f768793a237ec4ee59891959d6a215d63f727023/pip-19.0.1-py2.py3-none-any.whl
+Installing collected packages: pip
+  Found existing installation: pip 19.0.1
+    Uninstalling pip-19.0.1:
+      Successfully uninstalled pip-19.0.1
+Successfully installed pip-19.0.1
+DEPRECATION: Python 2.7 will reach the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 won't be maintained after that date. A future version of pip will drop support for Python 2.7.
+Requirement already satisfied: awscli in /usr/lib/python2.7/site-packages (1.15.80)
+Requirement already satisfied: xlsxwriter in /home/jenkins/.local/lib/python2.7/site-packages (1.1.2)
+Requirement already satisfied: botocore==1.10.79 in /usr/lib/python2.7/site-packages (from awscli) (1.10.79)
+Requirement already satisfied: colorama<=0.3.9,>=0.2.5 in /usr/lib/python2.7/site-packages (from awscli) (0.3.2)
+Requirement already satisfied: docutils>=0.10 in /usr/lib/python2.7/site-packages (from awscli) (0.12)
+Requirement already satisfied: rsa<=3.5.0,>=3.1.2 in /usr/lib/python2.7/site-packages (from awscli) (3.4.1)
+Requirement already satisfied: s3transfer<0.2.0,>=0.1.12 in /usr/lib/python2.7/site-packages (from awscli) (0.1.12)
+Requirement already satisfied: PyYAML<=3.13,>=3.10 in /usr/lib64/python2.7/site-packages (from awscli) (3.10)
+Requirement already satisfied: jmespath<1.0.0,>=0.7.1 in /usr/lib/python2.7/site-packages (from botocore==1.10.79->awscli) (0.9.3)
+Requirement already satisfied: python-dateutil<3.0.0,>=2.1 in /usr/lib/python2.7/site-packages (from botocore==1.10.79->awscli) (2.6.0)
+Requirement already satisfied: pyasn1>=0.1.3 in /usr/lib/python2.7/site-packages (from rsa<=3.5.0,>=3.1.2->awscli) (0.1.9)
+Requirement already satisfied: futures<4.0.0,>=2.2.0 in /usr/lib/python2.7/site-packages (from s3transfer<0.2.0,>=0.1.12->awscli) (3.0.5)
+Requirement already satisfied: six>=1.5 in /usr/lib/python2.7/site-packages (from python-dateutil<3.0.0,>=2.1->botocore==1.10.79->awscli) (1.9.0)
+++ aws ecr get-login --no-include-email --region us-east-1
++ docker login -u AWS -p eyJwYXlsb2FkIjoiV0QyckZnRTFYRHRubTJVTmlYMEZVN3ppeGZDSDVuVW1PL2hSQU9pcHJ1ZU1VQkVDbjVOL0FTQWVmY3RIMThkUk5pdE1sWWZwcmVqQURZL0RGSm80R3laQ0xaV3RxZHF6emlzOUo2ZjRWY2tRalFRam95a3dGdkRocVUwT2kwRjdZbVhLeUlGWGIwTkt4ZWtReFA2QU1uWnFEQ29ROWtaeFdnNncrVDgrN1d5NXptVkNFMjNhbXNIQ0hSTHV1S2FSSXRxUjF5Y1pzOWs3VjVIMmVSSDhSN05LYTBHMXdkQ09oWE9VS0pPMWtMckdjTGM3UUpldzErTnVNNlEzaUhuOHExcExTa095Zk8zUFZ3dXIzclJ2R29ra2tYczVmSzM0dzVmNGg0emduQjhqRi9hMDU5WVFKUndNbGJ5WDg4SXE0UUI2MTdOTDhlbGJBMUUyK3dSQmo2THkxUWpBUkJ4amFscDJmUS9zR2dRNjZOOHE0Zi9ZMkl6bDU3WFdqMThaSlpjZ3pKUXltNXd0ZTFQSTlSL1RhbDd4Ym5BVnJoNUJWKzYzZC8zYkZyWlkwVDMvT1lMN1NwYVp2bG1IS1F6NmlibkEzMGU1ODIwUk1aVDVITmxFRzQyTDFsa2x6a1o1UU0vNWpkc1Z1ekRvMjgwdGFndWFWYm44M1NlTW0yMUsxS1ZYNjg2dXlmazM0TnJaeEx0WXh0aElLR0U0VTdZS0R2R0M4VWhOdUdxRVdQU3UyVVZ4cGdSRnFXaHZQRWw5dEFSSzJ1blN1aFd4dHFBaWxQbFYxaWhrQ2ZweU52UEhPWi92L3VQYTNwTkZUMU5YeUdWN2d0aHlSbGNVNHJyYU4zZ3NSeDdLZmYyS2ZkNXo1dzJHWmFBWXpSNk82dHRlTkNzaDVrZTZwYUZCK0VGQytQYTJHWXBnMWNmZ1V1bUZUSFB5ZGh3ekwzTTJ3Nlo0NDA2MnYzaTNURzE1WWlhTHhtM3JUWVY4RmR0RVJ0RkNwNXVRcTNiVmpvekMycVlDakdzWGlRMFAvRytYL3hNbjdNMzRPdWFkOG9Cdi9jMDhTK1JWS2pDaGNDR3V5a3hyVm92RzduRVVObjZ3RVZqSitFaUZLeWZ2ZzFGbk5ENC9sNk5teXF6bnM5QldGOXoxejlncndlL2hXbkRoR1N4UTJRVHVvSHFGUUZXbmlCdGxXOHdzVTc1TXgrVVlaSVZzdG1ISEpHUlZ6VkN5R1AzYTBEMFhDN3Y0MURJZGlGcXQrL296UGZ3eXhzaTluWHU4YVFJMFQ2aE1rZ0ZzUm5adUFzSXR2YWxMeHVyazhta1lBVFZoQVNvR2VOQWVIRlZIU1ZnRVNzU3Z6bFdJWUtmOU5vSENuck1vN2U1aHRnM1AxQ3ZmMUhxRjBLQU9PL1RmZzN1blduSWZZZ2tXL0ZkYWRER2J0Y1o2L1NCZG5mVGJKUnhmeDVHcHprcVp1Q1EzMFhQRWpJbmFXZzhFZ2hqR2JrRk1UeGNWeTN0V0tnPT0iLCJkYXRha2V5IjoiQVFFQkFIaHdtMFlhSVNKZVJ0Sm01bjFHNnVxZWVrWHVvWFhQZTVVRmNlOVJxOC8xNHdBQUFINHdmQVlKS29aSWh2Y05BUWNHb0c4d2JRSUJBREJvQmdrcWhraUc5dzBCQndFd0hnWUpZSVpJQVdVREJBRXVNQkVFRENzdysvSTdTMnJaazhSQXJBSUJFSUE3ZW15dDluTFA3Y0VycFZQMFRMUjhFUm5uSW9nQjhETzNHQXVoWSt2L2x3YWFaYmVBWFNsekI0TS9hbTJ5Nkdhdy9kckRWbGFjQWtEc3FsOD0iLCJ2ZXJzaW9uIjoiMiIsInR5cGUiOiJEQVRBX0tFWSIsImV4cGlyYXRpb24iOjE1NDk1Mjg2NDh9 https://757687274468.dkr.ecr.us-east-1.amazonaws.com
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /home/jenkins/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
++ docker images
+REPOSITORY                                                TAG                 IMAGE ID            CREATED             SIZE
+kj_dev_pipeline_java_javavulnlab                          latest              c1f79007524b        About an hour ago   637MB
+tomcat                                                    latest              a0de3d800756        4 hours ago         462MB
+mysql                                                     latest              81f094a7e4cc        14 hours ago        477MB
+todo_proxy                                                latest              d4b530036e16        24 hours ago        157MB
+todo/mail-service                                         latest              d39ba4a5035d        24 hours ago        724MB
+todo/admin-server                                         latest              5a85de6bc611        24 hours ago        692MB
+todo/api-gateway                                          latest              ba55426dbabb        24 hours ago        711MB
+todo/user-service                                         latest              671b43866e0f        24 hours ago        705MB
+todo/oauth-server                                         latest              f1479e725475        24 hours ago        697MB
+todo/config-server                                        latest              b15af1e88dac        24 hours ago        677MB
+todo/eureka-server                                        latest              65598b019043        24 hours ago        697MB
+todo/reminder-service                                     latest              f2ea87bf2edb        24 hours ago        724MB
+frontend                                                  latest              336b51f127f1        29 hours ago        233MB
+todos-api                                                 latest              719c0ba9ba9f        29 hours ago        79.8MB
+log-message-processor                                     latest              a0b225758d1e        29 hours ago        240MB
+auth-api                                                  latest              24686a6111cc        29 hours ago        339MB
+users-api                                                 latest              362b15eade33        29 hours ago        265MB
+openzipkin/zipkin                                         latest              2af69151ca8e        3 days ago          144MB
+wurstmeister/kafka                                        latest              00d9fa372124        4 days ago          337MB
+openjdk                                                   8-alpine            21a93502ddd8        6 days ago          103MB
+python                                                    3.6-alpine          de35df1f34dd        6 days ago          74.5MB
+node                                                      8-alpine            e8ae960eaa9e        6 days ago          66.3MB
+redis                                                     latest              82629e941a38        2 weeks ago         95MB
+nginx                                                     latest              42b4762643dc        2 weeks ago         109MB
+openjdk                                                   8                   5f4603da3fbc        2 weeks ago         624MB
+wurstmeister/zookeeper                                    latest              3f43f72cb283        2 weeks ago         510MB
+k8s.gcr.io/kube-proxy                                     v1.13.2             01cfa56edcfc        3 weeks ago         80.3MB
+k8s.gcr.io/kube-apiserver                                 v1.13.2             177db4b8e93a        3 weeks ago         181MB
+k8s.gcr.io/kube-controller-manager                        v1.13.2             b9027a78d94c        3 weeks ago         146MB
+k8s.gcr.io/kube-scheduler                                 v1.13.2             3193be46e0b3        3 weeks ago         79.6MB
+dso-hackjs-pipeline_vulnerable_node                       latest              67f69f6694c5        2 months ago        471MB
+vulnerable-node_vulnerable_node                           latest              a511f2d87ce4        2 months ago        469MB
+dso-hackjs-pipeline_postgres_db                           latest              de848df4bbd4        2 months ago        311MB
+vulnerable-node_postgres_db                               latest              de848df4bbd4        2 months ago        311MB
+postgres                                                  latest              39dfbcb5424b        2 months ago        311MB
+k8s.gcr.io/coredns                                        1.2.6               f59dcacceff4        3 months ago        40MB
+ubuntu                                                    xenial              4a689991aa24        3 months ago        116MB
+757687274468.dkr.ecr.us-east-1.amazonaws.com/aws-dso      latest              5f1c3c118190        3 months ago        418MB
+k8s.gcr.io/etcd                                           3.2.24              3cab8e1b9802        4 months ago        220MB
+golang                                                    1.9-alpine          b0260be938c6        5 months ago        240MB
+757687274468.dkr.ecr.us-east-1.amazonaws.com/owasp/glue   latest              796ee2af7d83        8 months ago        1.34GB
+k8s.gcr.io/kube-addon-manager                             v8.6                9c16409588eb        11 months ago       78.4MB
+k8s.gcr.io/pause                                          3.1                 da86e6ba6ca1        13 months ago       742kB
+gcr.io/k8s-minikube/storage-provisioner                   v1.8.1              4689081edb10        15 months ago       80.8MB
+danmx/docker-arachni-cli                                  latest              067685562a9c        2 years ago         488MB
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (sast-scan)
+[Pipeline] parallel
+[Pipeline] { (Branch: sast-fe-scan-retirejs)
+[Pipeline] { (Branch: sast-be-fortify-scan)
+[Pipeline] stage
+[Pipeline] { (sast-fe-scan-retirejs)
+[Pipeline] stage
+[Pipeline] { (sast-be-fortify-scan)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] withCredentials
+[Pipeline] {
+[Pipeline] sh
+[Pipeline] sh
++ PATH=/home/jenkins/.local/bin:/home/jenkins/Fortify/Fortify_SCA_and_Apps_18.10/bin:/home/jenkins/.local/bin:/home/jenkins/Fortify/Fortify_SCA_and_Apps_18.10/bin:/usr/local/bin:/usr/bin:/home/jenkins/Fortify/bin
++ FPR_FILE=fortify_14.fpr
++ sourceanalyzer -b build -clean
++ docker run 757687274468.dkr.ecr.us-east-1.amazonaws.com/owasp/glue -t retirejs -f json
++ sourceanalyzer -b build '**/*.java'
+[warning]: Assuming Java source level to be 1.8 as it was not specified. Note that the default value may change in future versions.
+[warning]: The class "javax.servlet.http.HttpServlet" could not be found on the classpath, but it was found in the JAR file provided by Fortify in "/home/jenkins/Fortify/Fortify_SCA_and_Apps_18.10/Core/default_jars/javax.servlet-api-3.0.1.jar" as a convenience. To ensure consistent translation behavior add the JAR file that contains "javax.servlet.http.HttpServlet" to the classpath given to the translation step. Refer to the documentation about "default JARs" in the SCA User Guide for more information.
+[warning]: Unable to locate a class for import org.json.JSONObject
+[warning]: The following references to Java functions could not be resolved. These functions may be part of classes that could not be found, or there may be a type error at the call site of the given function relative to the function declaration. Please ensure the Java source code can be compiled by a Java compiler.
+	org.json.JSONObject.init^
+	org.json.JSONObject.put
+
++ sourceanalyzer -b build -scan -f fortify_14.fpr
+[Pipeline] sh
++ awk '/{"task":"RetireJS"/{i++}i' retirejs_tmp_14.json
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
++ echo xxx_FILENAME_xxx fortify_14.fpr
+xxx_FILENAME_xxx fortify_14.fpr
++ ReportGenerator -format xml -f fortify_sast_14.xml -source fortify_14.fpr -template DeveloperWorkbook.xml
++ python fxml2xlsx.py --input fortify_sast_14.xml --format xlsx --output fortify_sast_14.xlsx
+[2K
+[1m[36m[*][0m Parsing issue 1 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 2 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 3 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 4 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 5 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 6 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 7 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 8 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 9 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 10 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 11 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 12 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 13 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 14 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 15 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 16 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 17 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 18 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 19 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 20 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 21 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 22 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 23 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 24 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 25 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 26 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 27 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 28 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 29 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 30 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 31 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 32 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 33 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 34 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 35 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 36 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 37 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 38 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 39 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 40 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 41 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 42 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 43 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 44 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 45 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 46 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 47 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 48 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 49 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 50 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 51 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 52 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 53 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 54 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 55 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 56 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 57 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 58 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 59 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 60 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 61 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 62 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 63 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 64 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 65 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 66 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 67 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 68 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 69 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 70 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 71 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 72 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 73 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 74 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 75 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 76 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 77 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 78 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 79 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 80 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 81 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 82 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 83 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 84 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 85 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 86 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 87 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 88 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 89 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 90 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 91 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 92 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 93 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 94 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 95 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 96 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 97 of 98 ...[2K
+[1m[36m[*][0m Parsing issue 98 of 98 ...[2K
+[1m[36m[*][0m Writing high risk details to spreadsheet[2K
+[1m[36m[*][0m Writing medium risk details to spreadsheet[2K
+[1m[36m[*][0m Writing critical risk details to spreadsheet[2K
+[1m[36m[*][0m Writing low risk details to spreadsheet[2K
+[1m[36m[*][0m Writing master list to spreadsheet[2K
+[1m[36m[*][0m Saved output to: [1mfortify_sast_14.xlsx
+[2K
+[1m[36m[*][0m Completed in 0.047369 second(s)
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // parallel
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (start-application-8080)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
+++ uname -s
+++ uname -m
++ curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-Linux-x86_64 -o docker-compose
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100   617    0   617    0     0    617      0 --:--:-- --:--:-- --:--:--  6494
+
+100 11.2M  100 11.2M    0     0  11.2M      0  0:00:01 --:--:--  0:00:01 11.2M
++ chmod +x docker-compose
++ ./docker-compose up -d
+Creating kj_dev_pipeline_java_mysql_1 ...
+[1A[2K
+Creating kj_dev_pipeline_java_mysql_1 ... [32mdone[0m
+[1BCreating javavuln                     ...
+[1A[2K
+Creating javavuln                     ... [32mdone[0m
+[1B[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (dast-scan)
+[Pipeline] parallel
+[Pipeline] { (Branch: dast-scan-arachni)
+[Pipeline] stage
+[Pipeline] { (dast-scan-arachni)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] withCredentials
+[Pipeline] {
+[Pipeline] sh
+++ curl http://169.254.169.254/latest/meta-data/local-ipv4
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100    12  100    12    0     0     12      0  0:00:01 --:--:--  0:00:01  3000
++ IP=10.10.180.84
+++ pwd
++ docker run --rm -w /reports -v /home/jenkins/workspace/dev-sample-security/kj_dev_pipeline_java/arachni_reports:/reports danmx/docker-arachni-cli arachni http://10.10.180.84:8080 --report-save-path arachni_dast_14.afr --output-only-positives --timeout 00:05:00
+Arachni - Web Application Security Scanner Framework v1.4
+   Author: Tasos "Zapotek" Laskos <tasos.laskos@arachni-scanner.com>
+
+           (With the support of the community and the Arachni Team.)
+
+   Website:       http://arachni-scanner.com
+   Documentation: http://arachni-scanner.com/wiki
+
+
+[+] Missing X-Frame-Options header: In server with action http://10.10.180.84:8080/
+[+] Interesting responses: In server with action http://10.10.180.84:8080/
+[+] Interesting responses: Found an interesting response -- Code: 405.
+[+] Interesting responses: In server with action http://10.10.180.84:8080/Arachni-681483a51dbecbde231ec4d1cbb3e2a9
+[+] Interesting responses: Found an interesting response -- Code: 403.
+[+] Common directories: Found http://10.10.180.84:8080/examples/
+[+] Common directories: Found http://10.10.180.84:8080/docs/
+[+] Interesting responses: In server with action http://10.10.180.84:8080/manager/html
+[+] Interesting responses: Found an interesting response -- Code: 403.
+[+] Interesting responses: In server with action http://10.10.180.84:8080/host-manager/html
+[+] Interesting responses: Found an interesting response -- Code: 403.
+[+] Common directories: Found http://10.10.180.84:8080/docs/config/
+[+] Common directories: Found http://10.10.180.84:8080/examples/jsp/
+[+] Common directories: Found http://10.10.180.84:8080/docs/appdev/sample/
+[+] Private IP address finder: In body with action http://10.10.180.84:8080/docs/cluster-howto.html
+[+] Private IP address finder: In body with action http://10.10.180.84:8080/docs/jndi-datasource-examples-howto.html
+[+] Private IP address finder: In body with action http://10.10.180.84:8080/docs/ssl-howto.html
+[+] Private IP address finder: In body with action http://10.10.180.84:8080/docs/monitoring.html
+[+] Private IP address finder: In body with action http://10.10.180.84:8080/docs/monitoring.html
+[+] Private IP address finder: In body with action http://10.10.180.84:8080/docs/config/ajp.html
+[+] Private IP address finder: In body with action http://10.10.180.84:8080/docs/config/valve.html
+[+] Private IP address finder: In body with action http://10.10.180.84:8080/docs/config/valve.html
+[+] Private IP address finder: In body with action http://10.10.180.84:8080/docs/config/valve.html
+[+] Private IP address finder: In body with action http://10.10.180.84:8080/docs/config/filter.html
+[+] Private IP address finder: In body with action http://10.10.180.84:8080/docs/config/filter.html
+[+] Private IP address finder: In body with action http://10.10.180.84:8080/docs/config/filter.html
+[+] Private IP address finder: In body with action http://10.10.180.84:8080/docs/config/filter.html
+[+] Private IP address finder: In body with action http://10.10.180.84:8080/examples/jsp/jsp2/el/implicit-objects.jsp?foo=_arachni_trainer_681483a51dbecbde231ec4d1cbb3e2a9
+[+] Private IP address finder: In body with action http://10.10.180.84:8080/examples/jsp/jsp2/el/implicit-objects.jsp?foo=bar_arachni_trainer_681483a51dbecbde231ec4d1cbb3e2a9%00
+[+] Private IP address finder: In body with action http://10.10.180.84:8080/examples/jsp/jsp2/el/implicit-objects.jsp?foo=bar_arachni_trainer_681483a51dbecbde231ec4d1cbb3e2a9
+[+] Private IP address finder: In body with action http://10.10.180.84:8080/examples/jsp/jsp2/el/implicit-objects.jsp?foo=_arachni_trainer_681483a51dbecbde231ec4d1cbb3e2a9%00
+[+] Private IP address finder: In body with action http://10.10.180.84:8080/examples/jsp/jsp2/el/implicit-objects.jsp?foo=_arachni_trainer_681483a51dbecbde231ec4d1cbb3e2a9_arachni_trainer_681483a51dbecbde231ec4d1cbb3e2a9
+[+] Private IP address finder: In body with action http://10.10.180.84:8080/examples/jsp/jsp2/el/implicit-objects.jsp?foo=_arachni_trainer_681483a51dbecbde231ec4d1cbb3e2a9_arachni_trainer_681483a51dbecbde231ec4d1cbb3e2a9%00
+[+] Backup files: Found http://10.10.180.84:8080/docs/appdev/sample/sample.war
+[+] Private IP address finder: In body with action http://10.10.180.84:8080/examples/servlets/servlet/RequestInfoExample
+[+] Interesting responses: In server with action http://10.10.180.84:8080/examples/servlets/servlet/RequestInfoExample/Arachni-681483a51dbecbde231ec4d1cbb3e2a9
+[+] Interesting responses: Found an interesting response -- Code: 405.
+[+] Private IP address finder: In body with action http://10.10.180.84:8080/examples/servlets/servlet/RequestHeaderExample
+[+] Interesting responses: In server with action http://10.10.180.84:8080/examples/servlets/servlet/CookieExample
+[+] Interesting responses: Found an interesting response -- Code: 500.
+[+] Form-based File Upload: In form with inputs 'data, source' with action http://10.10.180.84:8080/examples/servlets/nonblocking/bytecounter
+[+] HttpOnly cookies: In cookie with inputs 'arachni_name' with action http://10.10.180.84:8080/examples/servlets/servlet/CookieExample
+[+] HttpOnly cookies: In cookie with inputs '_arachni_trainer_681483a51dbecbde231ec4d1cbb3e2a9' with action http://10.10.180.84:8080/examples/servlets/servlet/CookieExample
+[+] HttpOnly cookies: In cookie with inputs 'arachni_name_arachni_trainer_681483a51dbecbde231ec4d1cbb3e2a9' with action http://10.10.180.84:8080/examples/servlets/servlet/CookieExample
+[-] [ui/cli/framework#run:80] Timeout has been reached, shutting down.
+[*] Aborting...
+[~] Please wait while the system cleans up.
+[2J
+
+================================================================================
+
+
+[+] Web Application Security Report - Arachni Framework
+
+[~] Report generated on: 2019-02-06 20:43:38 +0000
+[~] Report false positives at: http://github.com/Arachni/arachni/issues
+
+[+] System settings:
+[~] ---------------
+[~] Version:           1.4
+[~] Audit started on:  2019-02-06 20:38:38 +0000
+[~] Audit finished on: 2019-02-06 20:43:38 +0000
+[~] Runtime:           00:05:00
+
+[~] URL:        http://10.10.180.84:8080/
+[~] User agent: Arachni/v1.4
+
+[*] Audited elements:
+[~] * Links
+[~] * Forms
+[~] * Cookies
+[~] * XMLs
+[~] * JSONs
+[~] * UI inputs
+[~] * UI forms
+
+[*] Checks: code_injection, code_injection_php_input_wrapper, code_injection_timing, csrf, file_inclusion, ldap_injection, no_sql_injection, no_sql_injection_differential, os_cmd_injection, os_cmd_injection_timing, path_traversal, response_splitting, rfi, session_fixation, source_code_disclosure, sql_injection, sql_injection_differential, sql_injection_timing, trainer, unvalidated_redirect, unvalidated_redirect_dom, xpath_injection, xss, xss_dom, xss_dom_script_context, xss_event, xss_path, xss_script_context, xss_tag, xxe, allowed_methods, backdoors, backup_directories, backup_files, common_admin_interfaces, common_directories, common_files, directory_listing, captcha, cookie_set_for_parent_domain, credit_card, cvs_svn_users, emails, form_upload, hsts, html_objects, http_only_cookies, insecure_cookies, insecure_cors_policy, mixed_resource, password_autocomplete, private_ip, ssn, unencrypted_password_forms, x_frame_options, htaccess_limit, http_put, insecure_client_access_policy, insecure_cross_domain_policy_access, insecure_cross_domain_policy_headers, interesting_responses, localstart_asp, origin_spoof_access_restriction_bypass, webdav, xst
+
+[~] ===========================
+
+[+] 31 issues were detected.
+
+[+] [1] Common directory (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     101291190
+[~] Severity:   Medium
+[~] Description:
+[~]
+Web applications are often made up of multiple files and directories.
+
+It is possible that over time some directories may become unreferenced (unused)
+by the web application and forgotten about by the administrator/developer.
+Because web applications are built using common frameworks, they contain common
+directories that can be discovered (independent of server).
+
+During the initial recon stages of an attack, cyber-criminals will attempt to
+locate unreferenced directories in the hope that the directory will assist in further
+compromise of the web application.
+To achieve this they will make thousands of requests using word lists containing
+common names.
+The response headers from the server will then indicate if the directory exists.
+
+Arachni also contains a list of common directory names which it will attempt to access.
+
+[~] Tags: path, directory, common, discovery
+
+[~] CWE: http://cwe.mitre.org/data/definitions/538.html
+[~] References:
+[~]   CWE - http://cwe.mitre.org/data/definitions/538.html
+[~]   OWASP - https://www.owasp.org/index.php/Forced_browsing
+
+[~] URL:        http://10.10.180.84:8080/docs/appdev/sample/
+[~] Element:    server
+
+[~] Proof:     "HTTP/1.1 200 "
+
+[~] Referring page: http://10.10.180.84:8080/docs/appdev/
+
+[~] Affected page:  http://10.10.180.84:8080/docs/appdev/sample/
+[~] HTTP request
+GET /docs/appdev/sample/ HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [2] Common directory (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     1471570517
+[~] Severity:   Medium
+[~] Description:
+[~]
+Web applications are often made up of multiple files and directories.
+
+It is possible that over time some directories may become unreferenced (unused)
+by the web application and forgotten about by the administrator/developer.
+Because web applications are built using common frameworks, they contain common
+directories that can be discovered (independent of server).
+
+During the initial recon stages of an attack, cyber-criminals will attempt to
+locate unreferenced directories in the hope that the directory will assist in further
+compromise of the web application.
+To achieve this they will make thousands of requests using word lists containing
+common names.
+The response headers from the server will then indicate if the directory exists.
+
+Arachni also contains a list of common directory names which it will attempt to access.
+
+[~] Tags: path, directory, common, discovery
+
+[~] CWE: http://cwe.mitre.org/data/definitions/538.html
+[~] References:
+[~]   CWE - http://cwe.mitre.org/data/definitions/538.html
+[~]   OWASP - https://www.owasp.org/index.php/Forced_browsing
+
+[~] URL:        http://10.10.180.84:8080/examples/
+[~] Element:    server
+
+[~] Proof:     "HTTP/1.1 200 "
+
+[~] Referring page: http://10.10.180.84:8080/
+
+[~] Affected page:  http://10.10.180.84:8080/examples/
+[~] HTTP request
+GET /examples/ HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [3] Common directory (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     46262772
+[~] Severity:   Medium
+[~] Description:
+[~]
+Web applications are often made up of multiple files and directories.
+
+It is possible that over time some directories may become unreferenced (unused)
+by the web application and forgotten about by the administrator/developer.
+Because web applications are built using common frameworks, they contain common
+directories that can be discovered (independent of server).
+
+During the initial recon stages of an attack, cyber-criminals will attempt to
+locate unreferenced directories in the hope that the directory will assist in further
+compromise of the web application.
+To achieve this they will make thousands of requests using word lists containing
+common names.
+The response headers from the server will then indicate if the directory exists.
+
+Arachni also contains a list of common directory names which it will attempt to access.
+
+[~] Tags: path, directory, common, discovery
+
+[~] CWE: http://cwe.mitre.org/data/definitions/538.html
+[~] References:
+[~]   CWE - http://cwe.mitre.org/data/definitions/538.html
+[~]   OWASP - https://www.owasp.org/index.php/Forced_browsing
+
+[~] URL:        http://10.10.180.84:8080/docs/
+[~] Element:    server
+
+[~] Proof:     "HTTP/1.1 200 "
+
+[~] Referring page: http://10.10.180.84:8080/
+
+[~] Affected page:  http://10.10.180.84:8080/docs/
+[~] HTTP request
+HEAD /docs/ HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [4] Common directory (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     1469478762
+[~] Severity:   Medium
+[~] Description:
+[~]
+Web applications are often made up of multiple files and directories.
+
+It is possible that over time some directories may become unreferenced (unused)
+by the web application and forgotten about by the administrator/developer.
+Because web applications are built using common frameworks, they contain common
+directories that can be discovered (independent of server).
+
+During the initial recon stages of an attack, cyber-criminals will attempt to
+locate unreferenced directories in the hope that the directory will assist in further
+compromise of the web application.
+To achieve this they will make thousands of requests using word lists containing
+common names.
+The response headers from the server will then indicate if the directory exists.
+
+Arachni also contains a list of common directory names which it will attempt to access.
+
+[~] Tags: path, directory, common, discovery
+
+[~] CWE: http://cwe.mitre.org/data/definitions/538.html
+[~] References:
+[~]   CWE - http://cwe.mitre.org/data/definitions/538.html
+[~]   OWASP - https://www.owasp.org/index.php/Forced_browsing
+
+[~] URL:        http://10.10.180.84:8080/examples/jsp/
+[~] Element:    server
+
+[~] Proof:     "HTTP/1.1 200 "
+
+[~] Referring page: http://10.10.180.84:8080/examples/
+
+[~] Affected page:  http://10.10.180.84:8080/examples/jsp/
+[~] HTTP request
+GET /examples/jsp/ HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [5] Common directory (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     4289869964
+[~] Severity:   Medium
+[~] Description:
+[~]
+Web applications are often made up of multiple files and directories.
+
+It is possible that over time some directories may become unreferenced (unused)
+by the web application and forgotten about by the administrator/developer.
+Because web applications are built using common frameworks, they contain common
+directories that can be discovered (independent of server).
+
+During the initial recon stages of an attack, cyber-criminals will attempt to
+locate unreferenced directories in the hope that the directory will assist in further
+compromise of the web application.
+To achieve this they will make thousands of requests using word lists containing
+common names.
+The response headers from the server will then indicate if the directory exists.
+
+Arachni also contains a list of common directory names which it will attempt to access.
+
+[~] Tags: path, directory, common, discovery
+
+[~] CWE: http://cwe.mitre.org/data/definitions/538.html
+[~] References:
+[~]   CWE - http://cwe.mitre.org/data/definitions/538.html
+[~]   OWASP - https://www.owasp.org/index.php/Forced_browsing
+
+[~] URL:        http://10.10.180.84:8080/docs/config/
+[~] Element:    server
+
+[~] Proof:     "HTTP/1.1 200 "
+
+[~] Referring page: http://10.10.180.84:8080/docs/
+
+[~] Affected page:  http://10.10.180.84:8080/docs/config/
+[~] HTTP request
+GET /docs/config/ HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [6] Backup file (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     2880035912
+[~] Severity:   Medium
+[~] Description:
+[~]
+A common practice when administering web applications is to create a copy/backup
+of a particular file or directory prior to making any modification to the file.
+Another common practice is to add an extension or change the name of the original
+file to signify that it is a backup (examples include `.bak`, `.orig`, `.backup`,
+etc.).
+
+During the initial recon stages of an attack, cyber-criminals will attempt to
+locate backup files by adding common extensions onto files already discovered on
+the webserver. By analysing the response headers from the server they are able to
+determine if the backup file exists.
+These backup files can then assist in the compromise of the web application.
+
+By utilising the same method, Arachni was able to discover a possible backup file.
+
+[~] Tags: path, backup, file, discovery
+
+[~] CWE: http://cwe.mitre.org/data/definitions/530.html
+[~] References:
+[~]   WebAppSec - http://www.webappsec.org/projects/threat/classes/information_leakage.shtml
+
+[~] URL:        http://10.10.180.84:8080/docs/appdev/sample/sample.war
+[~] Element:    server
+
+[~] Proof:     "HTTP/1.1 200 "
+
+[~] Referring page: http://10.10.180.84:8080/docs/appdev/sample/sample.war
+
+[~] Affected page:  http://10.10.180.84:8080/docs/appdev/sample/sample.war
+[~] HTTP request
+GET /docs/appdev/sample/sample.war HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [7] Private IP address disclosure (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     820834723
+[~] Severity:   Low
+[~] Description:
+[~]
+Private, or non-routable, IP addresses are generally used within a home or
+company network and are typically unknown to anyone outside of that network.
+
+Cyber-criminals will attempt to identify the private IP address range being used
+by their victim, to aid in collecting further information that could then lead
+to a possible compromise.
+
+Arachni discovered that the affected page returned a RFC 1918 compliant private
+IP address and therefore could be revealing sensitive information.
+
+_This finding typically requires manual verification to ensure the context is
+correct, as any private IP address within the HTML body will trigger it.
+
+[~] Tags:
+
+[~] CWE: http://cwe.mitre.org/data/definitions/200.html
+[~] References:
+[~]   WebAppSec - http://projects.webappsec.org/w/page/13246936/Information%20Leakage
+
+[~] URL:        http://10.10.180.84:8080/docs/config/filter.html
+[~] Element:    body
+
+[~] Signature: (?<!\.)(?<!\d)(?:(?:10|127)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|192\.168|169\.254|172\.0?(?:1[6-9]|2[0-9]|3[01]))(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){2}(?!\d)(?!\.)
+[~] Proof:     "10.10.0.0"
+
+[~] Referring page: http://10.10.180.84:8080/docs/config/filter.html
+
+[~] Affected page:  http://10.10.180.84:8080/docs/config/filter.html
+[~] HTTP request
+GET /docs/config/filter.html HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [8] Private IP address disclosure (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     2169091457
+[~] Severity:   Low
+[~] Description:
+[~]
+Private, or non-routable, IP addresses are generally used within a home or
+company network and are typically unknown to anyone outside of that network.
+
+Cyber-criminals will attempt to identify the private IP address range being used
+by their victim, to aid in collecting further information that could then lead
+to a possible compromise.
+
+Arachni discovered that the affected page returned a RFC 1918 compliant private
+IP address and therefore could be revealing sensitive information.
+
+_This finding typically requires manual verification to ensure the context is
+correct, as any private IP address within the HTML body will trigger it.
+
+[~] Tags:
+
+[~] CWE: http://cwe.mitre.org/data/definitions/200.html
+[~] References:
+[~]   WebAppSec - http://projects.webappsec.org/w/page/13246936/Information%20Leakage
+
+[~] URL:        http://10.10.180.84:8080/examples/jsp/jsp2/el/implicit-objects.jsp?foo=_arachni_trainer_681483a51dbecbde231ec4d1cbb3e2a9
+[~] Element:    body
+
+[~] Signature: (?<!\.)(?<!\d)(?:(?:10|127)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|192\.168|169\.254|172\.0?(?:1[6-9]|2[0-9]|3[01]))(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){2}(?!\d)(?!\.)
+[~] Proof:     "10.10.180.84"
+
+[~] Referring page: http://10.10.180.84:8080/examples/jsp/jsp2/el/implicit-objects.jsp?foo=_arachni_trainer_681483a51dbecbde231ec4d1cbb3e2a9
+
+[~] Affected page:  http://10.10.180.84:8080/examples/jsp/jsp2/el/implicit-objects.jsp?foo=_arachni_trainer_681483a51dbecbde231ec4d1cbb3e2a9
+[~] HTTP request
+GET /examples/jsp/jsp2/el/implicit-objects.jsp?foo=_arachni_trainer_681483a51dbecbde231ec4d1cbb3e2a9 HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [9] Private IP address disclosure (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     3958721952
+[~] Severity:   Low
+[~] Description:
+[~]
+Private, or non-routable, IP addresses are generally used within a home or
+company network and are typically unknown to anyone outside of that network.
+
+Cyber-criminals will attempt to identify the private IP address range being used
+by their victim, to aid in collecting further information that could then lead
+to a possible compromise.
+
+Arachni discovered that the affected page returned a RFC 1918 compliant private
+IP address and therefore could be revealing sensitive information.
+
+_This finding typically requires manual verification to ensure the context is
+correct, as any private IP address within the HTML body will trigger it.
+
+[~] Tags:
+
+[~] CWE: http://cwe.mitre.org/data/definitions/200.html
+[~] References:
+[~]   WebAppSec - http://projects.webappsec.org/w/page/13246936/Information%20Leakage
+
+[~] URL:        http://10.10.180.84:8080/docs/config/filter.html
+[~] Element:    body
+
+[~] Signature: (?<!\.)(?<!\d)(?:(?:10|127)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|192\.168|169\.254|172\.0?(?:1[6-9]|2[0-9]|3[01]))(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){2}(?!\d)(?!\.)
+[~] Proof:     "192.168.0.10"
+
+[~] Referring page: http://10.10.180.84:8080/docs/config/filter.html
+
+[~] Affected page:  http://10.10.180.84:8080/docs/config/filter.html
+[~] HTTP request
+GET /docs/config/filter.html HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [10] Private IP address disclosure (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     2590662471
+[~] Severity:   Low
+[~] Description:
+[~]
+Private, or non-routable, IP addresses are generally used within a home or
+company network and are typically unknown to anyone outside of that network.
+
+Cyber-criminals will attempt to identify the private IP address range being used
+by their victim, to aid in collecting further information that could then lead
+to a possible compromise.
+
+Arachni discovered that the affected page returned a RFC 1918 compliant private
+IP address and therefore could be revealing sensitive information.
+
+_This finding typically requires manual verification to ensure the context is
+correct, as any private IP address within the HTML body will trigger it.
+
+[~] Tags:
+
+[~] CWE: http://cwe.mitre.org/data/definitions/200.html
+[~] References:
+[~]   WebAppSec - http://projects.webappsec.org/w/page/13246936/Information%20Leakage
+
+[~] URL:        http://10.10.180.84:8080/docs/config/filter.html
+[~] Element:    body
+
+[~] Signature: (?<!\.)(?<!\d)(?:(?:10|127)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|192\.168|169\.254|172\.0?(?:1[6-9]|2[0-9]|3[01]))(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){2}(?!\d)(?!\.)
+[~] Proof:     "127.0.0.0"
+
+[~] Referring page: http://10.10.180.84:8080/docs/config/filter.html
+
+[~] Affected page:  http://10.10.180.84:8080/docs/config/filter.html
+[~] HTTP request
+GET /docs/config/filter.html HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [11] Private IP address disclosure (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     3838474482
+[~] Severity:   Low
+[~] Description:
+[~]
+Private, or non-routable, IP addresses are generally used within a home or
+company network and are typically unknown to anyone outside of that network.
+
+Cyber-criminals will attempt to identify the private IP address range being used
+by their victim, to aid in collecting further information that could then lead
+to a possible compromise.
+
+Arachni discovered that the affected page returned a RFC 1918 compliant private
+IP address and therefore could be revealing sensitive information.
+
+_This finding typically requires manual verification to ensure the context is
+correct, as any private IP address within the HTML body will trigger it.
+
+[~] Tags:
+
+[~] CWE: http://cwe.mitre.org/data/definitions/200.html
+[~] References:
+[~]   WebAppSec - http://projects.webappsec.org/w/page/13246936/Information%20Leakage
+
+[~] URL:        http://10.10.180.84:8080/examples/servlets/servlet/RequestInfoExample
+[~] Element:    body
+
+[~] Signature: (?<!\.)(?<!\d)(?:(?:10|127)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|192\.168|169\.254|172\.0?(?:1[6-9]|2[0-9]|3[01]))(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){2}(?!\d)(?!\.)
+[~] Proof:     "172.17.0.1"
+
+[~] Referring page: http://10.10.180.84:8080/examples/servlets/servlet/RequestInfoExample
+
+[~] Affected page:  http://10.10.180.84:8080/examples/servlets/servlet/RequestInfoExample
+[~] HTTP request
+GET /examples/servlets/servlet/RequestInfoExample HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+Cookie: JSESSIONID=66A4C78C06AC485CC35060FDF14A3957
+
+
+
+[+] [12] Private IP address disclosure (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     1969702486
+[~] Severity:   Low
+[~] Description:
+[~]
+Private, or non-routable, IP addresses are generally used within a home or
+company network and are typically unknown to anyone outside of that network.
+
+Cyber-criminals will attempt to identify the private IP address range being used
+by their victim, to aid in collecting further information that could then lead
+to a possible compromise.
+
+Arachni discovered that the affected page returned a RFC 1918 compliant private
+IP address and therefore could be revealing sensitive information.
+
+_This finding typically requires manual verification to ensure the context is
+correct, as any private IP address within the HTML body will trigger it.
+
+[~] Tags:
+
+[~] CWE: http://cwe.mitre.org/data/definitions/200.html
+[~] References:
+[~]   WebAppSec - http://projects.webappsec.org/w/page/13246936/Information%20Leakage
+
+[~] URL:        http://10.10.180.84:8080/docs/config/filter.html
+[~] Element:    body
+
+[~] Signature: (?<!\.)(?<!\d)(?:(?:10|127)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|192\.168|169\.254|172\.0?(?:1[6-9]|2[0-9]|3[01]))(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){2}(?!\d)(?!\.)
+[~] Proof:     "192.168.1.0"
+
+[~] Referring page: http://10.10.180.84:8080/docs/config/filter.html
+
+[~] Affected page:  http://10.10.180.84:8080/docs/config/filter.html
+[~] HTTP request
+GET /docs/config/filter.html HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [13] Private IP address disclosure (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     3834673840
+[~] Severity:   Low
+[~] Description:
+[~]
+Private, or non-routable, IP addresses are generally used within a home or
+company network and are typically unknown to anyone outside of that network.
+
+Cyber-criminals will attempt to identify the private IP address range being used
+by their victim, to aid in collecting further information that could then lead
+to a possible compromise.
+
+Arachni discovered that the affected page returned a RFC 1918 compliant private
+IP address and therefore could be revealing sensitive information.
+
+_This finding typically requires manual verification to ensure the context is
+correct, as any private IP address within the HTML body will trigger it.
+
+[~] Tags:
+
+[~] CWE: http://cwe.mitre.org/data/definitions/200.html
+[~] References:
+[~]   WebAppSec - http://projects.webappsec.org/w/page/13246936/Information%20Leakage
+
+[~] URL:        http://10.10.180.84:8080/docs/config/valve.html
+[~] Element:    body
+
+[~] Signature: (?<!\.)(?<!\d)(?:(?:10|127)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|192\.168|169\.254|172\.0?(?:1[6-9]|2[0-9]|3[01]))(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){2}(?!\d)(?!\.)
+[~] Proof:     "127.0.0.1"
+
+[~] Referring page: http://10.10.180.84:8080/docs/config/valve.html
+
+[~] Affected page:  http://10.10.180.84:8080/docs/config/valve.html
+[~] HTTP request
+GET /docs/config/valve.html HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [14] Private IP address disclosure (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     3878350541
+[~] Severity:   Low
+[~] Description:
+[~]
+Private, or non-routable, IP addresses are generally used within a home or
+company network and are typically unknown to anyone outside of that network.
+
+Cyber-criminals will attempt to identify the private IP address range being used
+by their victim, to aid in collecting further information that could then lead
+to a possible compromise.
+
+Arachni discovered that the affected page returned a RFC 1918 compliant private
+IP address and therefore could be revealing sensitive information.
+
+_This finding typically requires manual verification to ensure the context is
+correct, as any private IP address within the HTML body will trigger it.
+
+[~] Tags:
+
+[~] CWE: http://cwe.mitre.org/data/definitions/200.html
+[~] References:
+[~]   WebAppSec - http://projects.webappsec.org/w/page/13246936/Information%20Leakage
+
+[~] URL:        http://10.10.180.84:8080/docs/config/valve.html
+[~] Element:    body
+
+[~] Signature: (?<!\.)(?<!\d)(?:(?:10|127)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|192\.168|169\.254|172\.0?(?:1[6-9]|2[0-9]|3[01]))(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){2}(?!\d)(?!\.)
+[~] Proof:     "10.10.0.0"
+
+[~] Referring page: http://10.10.180.84:8080/docs/config/valve.html
+
+[~] Affected page:  http://10.10.180.84:8080/docs/config/valve.html
+[~] HTTP request
+GET /docs/config/valve.html HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [15] Private IP address disclosure (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     3015798496
+[~] Severity:   Low
+[~] Description:
+[~]
+Private, or non-routable, IP addresses are generally used within a home or
+company network and are typically unknown to anyone outside of that network.
+
+Cyber-criminals will attempt to identify the private IP address range being used
+by their victim, to aid in collecting further information that could then lead
+to a possible compromise.
+
+Arachni discovered that the affected page returned a RFC 1918 compliant private
+IP address and therefore could be revealing sensitive information.
+
+_This finding typically requires manual verification to ensure the context is
+correct, as any private IP address within the HTML body will trigger it.
+
+[~] Tags:
+
+[~] CWE: http://cwe.mitre.org/data/definitions/200.html
+[~] References:
+[~]   WebAppSec - http://projects.webappsec.org/w/page/13246936/Information%20Leakage
+
+[~] URL:        http://10.10.180.84:8080/docs/config/valve.html
+[~] Element:    body
+
+[~] Signature: (?<!\.)(?<!\d)(?:(?:10|127)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|192\.168|169\.254|172\.0?(?:1[6-9]|2[0-9]|3[01]))(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){2}(?!\d)(?!\.)
+[~] Proof:     "192.168.1.0"
+
+[~] Referring page: http://10.10.180.84:8080/docs/config/valve.html
+
+[~] Affected page:  http://10.10.180.84:8080/docs/config/valve.html
+[~] HTTP request
+GET /docs/config/valve.html HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [16] Private IP address disclosure (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     2260503067
+[~] Severity:   Low
+[~] Description:
+[~]
+Private, or non-routable, IP addresses are generally used within a home or
+company network and are typically unknown to anyone outside of that network.
+
+Cyber-criminals will attempt to identify the private IP address range being used
+by their victim, to aid in collecting further information that could then lead
+to a possible compromise.
+
+Arachni discovered that the affected page returned a RFC 1918 compliant private
+IP address and therefore could be revealing sensitive information.
+
+_This finding typically requires manual verification to ensure the context is
+correct, as any private IP address within the HTML body will trigger it.
+
+[~] Tags:
+
+[~] CWE: http://cwe.mitre.org/data/definitions/200.html
+[~] References:
+[~]   WebAppSec - http://projects.webappsec.org/w/page/13246936/Information%20Leakage
+
+[~] URL:        http://10.10.180.84:8080/examples/servlets/servlet/RequestHeaderExample
+[~] Element:    body
+
+[~] Signature: (?<!\.)(?<!\d)(?:(?:10|127)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|192\.168|169\.254|172\.0?(?:1[6-9]|2[0-9]|3[01]))(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){2}(?!\d)(?!\.)
+[~] Proof:     "10.10.180.84"
+
+[~] Referring page: http://10.10.180.84:8080/examples/servlets/servlet/RequestHeaderExample
+
+[~] Affected page:  http://10.10.180.84:8080/examples/servlets/servlet/RequestHeaderExample
+[~] HTTP request
+GET /examples/servlets/servlet/RequestHeaderExample HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+Cookie: JSESSIONID=66A4C78C06AC485CC35060FDF14A3957
+
+
+
+[+] [17] Private IP address disclosure (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     3566308262
+[~] Severity:   Low
+[~] Description:
+[~]
+Private, or non-routable, IP addresses are generally used within a home or
+company network and are typically unknown to anyone outside of that network.
+
+Cyber-criminals will attempt to identify the private IP address range being used
+by their victim, to aid in collecting further information that could then lead
+to a possible compromise.
+
+Arachni discovered that the affected page returned a RFC 1918 compliant private
+IP address and therefore could be revealing sensitive information.
+
+_This finding typically requires manual verification to ensure the context is
+correct, as any private IP address within the HTML body will trigger it.
+
+[~] Tags:
+
+[~] CWE: http://cwe.mitre.org/data/definitions/200.html
+[~] References:
+[~]   WebAppSec - http://projects.webappsec.org/w/page/13246936/Information%20Leakage
+
+[~] URL:        http://10.10.180.84:8080/docs/monitoring.html
+[~] Element:    body
+
+[~] Signature: (?<!\.)(?<!\d)(?:(?:10|127)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|192\.168|169\.254|172\.0?(?:1[6-9]|2[0-9]|3[01]))(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){2}(?!\d)(?!\.)
+[~] Proof:     "192.168.111.1"
+
+[~] Referring page: http://10.10.180.84:8080/docs/monitoring.html
+
+[~] Affected page:  http://10.10.180.84:8080/docs/monitoring.html
+[~] HTTP request
+GET /docs/monitoring.html HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [18] Private IP address disclosure (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     3742198540
+[~] Severity:   Low
+[~] Description:
+[~]
+Private, or non-routable, IP addresses are generally used within a home or
+company network and are typically unknown to anyone outside of that network.
+
+Cyber-criminals will attempt to identify the private IP address range being used
+by their victim, to aid in collecting further information that could then lead
+to a possible compromise.
+
+Arachni discovered that the affected page returned a RFC 1918 compliant private
+IP address and therefore could be revealing sensitive information.
+
+_This finding typically requires manual verification to ensure the context is
+correct, as any private IP address within the HTML body will trigger it.
+
+[~] Tags:
+
+[~] CWE: http://cwe.mitre.org/data/definitions/200.html
+[~] References:
+[~]   WebAppSec - http://projects.webappsec.org/w/page/13246936/Information%20Leakage
+
+[~] URL:        http://10.10.180.84:8080/docs/monitoring.html
+[~] Element:    body
+
+[~] Signature: (?<!\.)(?<!\d)(?:(?:10|127)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|192\.168|169\.254|172\.0?(?:1[6-9]|2[0-9]|3[01]))(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){2}(?!\d)(?!\.)
+[~] Proof:     "192.168.1.75"
+
+[~] Referring page: http://10.10.180.84:8080/docs/monitoring.html
+
+[~] Affected page:  http://10.10.180.84:8080/docs/monitoring.html
+[~] HTTP request
+GET /docs/monitoring.html HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [19] Private IP address disclosure (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     3033270982
+[~] Severity:   Low
+[~] Description:
+[~]
+Private, or non-routable, IP addresses are generally used within a home or
+company network and are typically unknown to anyone outside of that network.
+
+Cyber-criminals will attempt to identify the private IP address range being used
+by their victim, to aid in collecting further information that could then lead
+to a possible compromise.
+
+Arachni discovered that the affected page returned a RFC 1918 compliant private
+IP address and therefore could be revealing sensitive information.
+
+_This finding typically requires manual verification to ensure the context is
+correct, as any private IP address within the HTML body will trigger it.
+
+[~] Tags:
+
+[~] CWE: http://cwe.mitre.org/data/definitions/200.html
+[~] References:
+[~]   WebAppSec - http://projects.webappsec.org/w/page/13246936/Information%20Leakage
+
+[~] URL:        http://10.10.180.84:8080/docs/ssl-howto.html
+[~] Element:    body
+
+[~] Signature: (?<!\.)(?<!\d)(?:(?:10|127)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|192\.168|169\.254|172\.0?(?:1[6-9]|2[0-9]|3[01]))(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){2}(?!\d)(?!\.)
+[~] Proof:     "127.0.0.1"
+
+[~] Referring page: http://10.10.180.84:8080/docs/ssl-howto.html
+
+[~] Affected page:  http://10.10.180.84:8080/docs/ssl-howto.html
+[~] HTTP request
+GET /docs/ssl-howto.html HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [20] Private IP address disclosure (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     1428153695
+[~] Severity:   Low
+[~] Description:
+[~]
+Private, or non-routable, IP addresses are generally used within a home or
+company network and are typically unknown to anyone outside of that network.
+
+Cyber-criminals will attempt to identify the private IP address range being used
+by their victim, to aid in collecting further information that could then lead
+to a possible compromise.
+
+Arachni discovered that the affected page returned a RFC 1918 compliant private
+IP address and therefore could be revealing sensitive information.
+
+_This finding typically requires manual verification to ensure the context is
+correct, as any private IP address within the HTML body will trigger it.
+
+[~] Tags:
+
+[~] CWE: http://cwe.mitre.org/data/definitions/200.html
+[~] References:
+[~]   WebAppSec - http://projects.webappsec.org/w/page/13246936/Information%20Leakage
+
+[~] URL:        http://10.10.180.84:8080/docs/jndi-datasource-examples-howto.html
+[~] Element:    body
+
+[~] Signature: (?<!\.)(?<!\d)(?:(?:10|127)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|192\.168|169\.254|172\.0?(?:1[6-9]|2[0-9]|3[01]))(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){2}(?!\d)(?!\.)
+[~] Proof:     "127.0.0.1"
+
+[~] Referring page: http://10.10.180.84:8080/docs/jndi-datasource-examples-howto.html
+
+[~] Affected page:  http://10.10.180.84:8080/docs/jndi-datasource-examples-howto.html
+[~] HTTP request
+GET /docs/jndi-datasource-examples-howto.html HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [21] Private IP address disclosure (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     1179698119
+[~] Severity:   Low
+[~] Description:
+[~]
+Private, or non-routable, IP addresses are generally used within a home or
+company network and are typically unknown to anyone outside of that network.
+
+Cyber-criminals will attempt to identify the private IP address range being used
+by their victim, to aid in collecting further information that could then lead
+to a possible compromise.
+
+Arachni discovered that the affected page returned a RFC 1918 compliant private
+IP address and therefore could be revealing sensitive information.
+
+_This finding typically requires manual verification to ensure the context is
+correct, as any private IP address within the HTML body will trigger it.
+
+[~] Tags:
+
+[~] CWE: http://cwe.mitre.org/data/definitions/200.html
+[~] References:
+[~]   WebAppSec - http://projects.webappsec.org/w/page/13246936/Information%20Leakage
+
+[~] URL:        http://10.10.180.84:8080/docs/cluster-howto.html
+[~] Element:    body
+
+[~] Signature: (?<!\.)(?<!\d)(?:(?:10|127)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|192\.168|169\.254|172\.0?(?:1[6-9]|2[0-9]|3[01]))(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){2}(?!\d)(?!\.)
+[~] Proof:     "127.0.0.1"
+
+[~] Referring page: http://10.10.180.84:8080/docs/cluster-howto.html
+
+[~] Affected page:  http://10.10.180.84:8080/docs/cluster-howto.html
+[~] HTTP request
+GET /docs/cluster-howto.html HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [22] Missing 'X-Frame-Options' header (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     3796773149
+[~] Severity:   Low
+[~] Description:
+[~]
+Clickjacking (User Interface redress attack, UI redress attack, UI redressing)
+is a malicious technique of tricking a Web user into clicking on something different
+from what the user perceives they are clicking on, thus potentially revealing
+confidential information or taking control of their computer while clicking on
+seemingly innocuous web pages.
+
+The server didn't return an `X-Frame-Options` header which means that this website
+could be at risk of a clickjacking attack.
+
+The `X-Frame-Options` HTTP response header can be used to indicate whether or not
+a browser should be allowed to render a page inside a frame or iframe. Sites can
+use this to avoid clickjacking attacks, by ensuring that their content is not
+embedded into other sites.
+
+[~] Tags:
+
+[~] CWE: http://cwe.mitre.org/data/definitions/693.html
+[~] References:
+[~]   MDN - https://developer.mozilla.org/en-US/docs/Web/HTTP/X-Frame-Options
+[~]   RFC - http://tools.ietf.org/html/rfc7034
+[~]   OWASP - https://www.owasp.org/index.php/Clickjacking
+
+[~] URL:        http://10.10.180.84:8080/
+[~] Element:    server
+
+[~] Proof:     "HTTP/1.1 200 "
+
+[~] Referring page: http://10.10.180.84:8080/
+
+[~] Affected page:  http://10.10.180.84:8080/
+[~] HTTP request
+GET / HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [23] Private IP address disclosure (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     1100551311
+[~] Severity:   Low
+[~] Description:
+[~]
+Private, or non-routable, IP addresses are generally used within a home or
+company network and are typically unknown to anyone outside of that network.
+
+Cyber-criminals will attempt to identify the private IP address range being used
+by their victim, to aid in collecting further information that could then lead
+to a possible compromise.
+
+Arachni discovered that the affected page returned a RFC 1918 compliant private
+IP address and therefore could be revealing sensitive information.
+
+_This finding typically requires manual verification to ensure the context is
+correct, as any private IP address within the HTML body will trigger it.
+
+[~] Tags:
+
+[~] CWE: http://cwe.mitre.org/data/definitions/200.html
+[~] References:
+[~]   WebAppSec - http://projects.webappsec.org/w/page/13246936/Information%20Leakage
+
+[~] URL:        http://10.10.180.84:8080/docs/config/ajp.html
+[~] Element:    body
+
+[~] Signature: (?<!\.)(?<!\d)(?:(?:10|127)\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)|192\.168|169\.254|172\.0?(?:1[6-9]|2[0-9]|3[01]))(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){2}(?!\d)(?!\.)
+[~] Proof:     "127.0.0.1"
+
+[~] Referring page: http://10.10.180.84:8080/docs/config/ajp.html
+
+[~] Affected page:  http://10.10.180.84:8080/docs/config/ajp.html
+[~] HTTP request
+GET /docs/config/ajp.html HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [24] Interesting response (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     4203938184
+[~] Severity:   Informational
+[~] Description:
+[~]
+The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.
+
+[~] Tags: interesting, response, server
+[~] References:
+[~]   w3.org - http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+
+[~] URL:        http://10.10.180.84:8080/examples/servlets/servlet/RequestInfoExample/Arachni-681483a51dbecbde231ec4d1cbb3e2a9
+[~] Element:    server
+
+[~] Proof:     "HTTP/1.1 100 "
+
+[~] Referring page: http://10.10.180.84:8080/
+
+[~] Affected page:  http://10.10.180.84:8080/examples/servlets/servlet/RequestInfoExample/Arachni-681483a51dbecbde231ec4d1cbb3e2a9
+[~] HTTP request
+PUT /examples/servlets/servlet/RequestInfoExample/Arachni-681483a51dbecbde231ec4d1cbb3e2a9 HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+Cookie: JSESSIONID=66A4C78C06AC485CC35060FDF14A3957
+Content-Length: 55
+Expect: 100-continue
+
+
+
+[+] [25] Interesting response (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     3099200648
+[~] Severity:   Informational
+[~] Description:
+[~]
+The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.
+
+[~] Tags: interesting, response, server
+[~] References:
+[~]   w3.org - http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+
+[~] URL:        http://10.10.180.84:8080/host-manager/html
+[~] Element:    server
+
+[~] Proof:     "HTTP/1.1 403 "
+
+[~] Referring page: http://10.10.180.84:8080/
+
+[~] Affected page:  http://10.10.180.84:8080/host-manager/html
+[~] HTTP request
+GET /host-manager/html HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [26] Interesting response (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     135387812
+[~] Severity:   Informational
+[~] Description:
+[~]
+The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.
+
+[~] Tags: interesting, response, server
+[~] References:
+[~]   w3.org - http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+
+[~] URL:        http://10.10.180.84:8080/manager/html
+[~] Element:    server
+
+[~] Proof:     "HTTP/1.1 403 "
+
+[~] Referring page: http://10.10.180.84:8080/
+
+[~] Affected page:  http://10.10.180.84:8080/manager/html
+[~] HTTP request
+GET /manager/html HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [27] Interesting response (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     59927436
+[~] Severity:   Informational
+[~] Description:
+[~]
+The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.
+
+[~] Tags: interesting, response, server
+[~] References:
+[~]   w3.org - http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+
+[~] URL:        http://10.10.180.84:8080/examples/servlets/servlet/CookieExample
+[~] Element:    server
+
+[~] Proof:     "HTTP/1.1 500 "
+
+[~] Referring page: http://10.10.180.84:8080/
+
+[~] Affected page:  http://10.10.180.84:8080/examples/servlets/servlet/CookieExample
+[~] HTTP request
+POST /examples/servlets/servlet/CookieExample HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+Cookie: JSESSIONID=66A4C78C06AC485CC35060FDF14A3957
+Content-Length: 94
+Content-Type: application/x-www-form-urlencoded
+
+cookiename=arachni_name%23%5E%28%24%21%40%24%29%28%28%29%29%29%2A%2A%2A%2A%2A%2A&cookievalue=1
+
+[+] [28] Form-based File Upload (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     196651344
+[~] Severity:   Informational
+[~] Description:
+[~]
+The design of many web applications require that users be able to upload files
+that will either be stored or processed by the receiving web server.
+
+Arachni has flagged this not as a vulnerability, but as a prompt for the
+penetration tester to conduct further manual testing on the file upload function.
+
+An insecure form-based file upload could allow a cyber-criminal a means to abuse
+and successfully exploit the server directly, and/or any third party that may
+later access the file. This can occur through uploading a file containing server
+side-code (such as PHP) that is then executed when requested by the client.
+
+[~] Tags: file, upload
+
+[~] CWE: http://cwe.mitre.org/data/definitions/200.html
+[~] References:
+[~]   owasp.org - https://www.owasp.org/index.php/Unrestricted_File_Upload
+
+[~] URL:        http://10.10.180.84:8080/examples/servlets/nonblocking/bytecounter
+[~] Element:    form
+[~] All inputs: data, source
+
+[~] Proof:     ""
+
+[~] Referring page: http://10.10.180.84:8080/examples/servlets/nonblocking/bytecounter.html
+
+[~] Affected page:  http://10.10.180.84:8080/examples/servlets/nonblocking/bytecounter.html
+[~] HTTP request
+GET /examples/servlets/nonblocking/bytecounter.html HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+Cookie: JSESSIONID=66A4C78C06AC485CC35060FDF14A3957
+
+
+
+[+] [29] Interesting response (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     2945858823
+[~] Severity:   Informational
+[~] Description:
+[~]
+The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.
+
+[~] Tags: interesting, response, server
+[~] References:
+[~]   w3.org - http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+
+[~] URL:        http://10.10.180.84:8080/Arachni-681483a51dbecbde231ec4d1cbb3e2a9
+[~] Element:    server
+
+[~] Proof:     "HTTP/1.1 100 "
+
+[~] Referring page: http://10.10.180.84:8080/
+
+[~] Affected page:  http://10.10.180.84:8080/Arachni-681483a51dbecbde231ec4d1cbb3e2a9
+[~] HTTP request
+PUT /Arachni-681483a51dbecbde231ec4d1cbb3e2a9 HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+Content-Length: 55
+Expect: 100-continue
+
+Created by Arachni. PUT681483a51dbecbde231ec4d1cbb3e2a9
+
+[+] [30] Interesting response (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     340535168
+[~] Severity:   Informational
+[~] Description:
+[~]
+The server responded with a non 200 (OK) nor 404 (Not Found) status code.
+This is a non-issue, however exotic HTTP response status codes can provide useful
+insights into the behavior of the web application and assist with the penetration test.
+
+[~] Tags: interesting, response, server
+[~] References:
+[~]   w3.org - http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+
+[~] URL:        http://10.10.180.84:8080/
+[~] Element:    server
+
+[~] Proof:     "HTTP/1.1 405 "
+
+[~] Referring page: http://10.10.180.84:8080/
+
+[~] Affected page:  http://10.10.180.84:8080/
+[~] HTTP request
+OPTIONS / HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+
+
+
+[+] [31] HttpOnly cookie (Trusted)
+[~] ~~~~~~~~~~~~~~~~~~~~
+[~] Digest:     693978604
+[~] Severity:   Informational
+[~] Description:
+[~]
+HTTP by itself is a stateless protocol. Therefore the server is unable to determine
+which requests are performed by which client, and which clients are authenticated
+or unauthenticated.
+
+The use of HTTP cookies within the headers, allows a web server to identify each
+individual client and can therefore determine which clients hold valid
+authentication, from those that do not. These are known as session cookies.
+
+When a cookie is set by the server (sent the header of an HTTP response) there
+are several flags that can be set to configure the properties of the cookie and
+how it is to be handled by the browser.
+
+The `HttpOnly` flag assists in the prevention of client side-scripts (such as
+JavaScript) accessing and using the cookie.
+
+This can help prevent XSS attacks targeting the cookies holding the client's
+session token (setting the `HttpOnly` flag does not prevent, nor safeguard against
+XSS vulnerabilities themselves).
+
+[~] Tags:
+
+[~] CWE: http://cwe.mitre.org/data/definitions/200.html
+[~] References:
+[~]   HttpOnly - OWASP - https://www.owasp.org/index.php/HttpOnly
+
+[~] URL:        http://10.10.180.84:8080/examples/servlets/servlet/CookieExample
+[~] Element:    cookie
+[~] All inputs: arachni_name
+
+
+[~] Referring page: http://10.10.180.84:8080/examples/servlets/servlet/CookieExample
+
+[~] Affected page:  http://10.10.180.84:8080/examples/servlets/servlet/CookieExample
+[~] HTTP request
+POST /examples/servlets/servlet/CookieExample HTTP/1.1
+Host: 10.10.180.84:8080
+Accept-Encoding: gzip, deflate
+User-Agent: Arachni/v1.4
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.8,he;q=0.6
+Cookie: JSESSIONID=66A4C78C06AC485CC35060FDF14A3957
+Content-Length: 37
+Content-Type: application/x-www-form-urlencoded
+
+cookiename=arachni_name&cookievalue=1
+
+
+[+] Plugin data:
+[~] ---------------
+
+
+[*] Health map
+[~] ~~~~~~~~~~~~~~
+[~] Description: Generates a simple list of safe/unsafe URLs.
+
+[~] Legend:
+[+] No issues
+[-] Has issues
+
+[-] http://10.10.180.84:8080/
+[-] http://10.10.180.84:8080/Arachni-681483a51dbecbde231ec4d1cbb3e2a9
+[-] http://10.10.180.84:8080/docs/
+[+] http://10.10.180.84:8080/docs/BUILDING.txt
+[+] http://10.10.180.84:8080/docs/RELEASE-NOTES.txt
+[+] http://10.10.180.84:8080/docs/RUNNING.txt
+[+] http://10.10.180.84:8080/docs/aio.html
+[+] http://10.10.180.84:8080/docs/api/index.html
+[+] http://10.10.180.84:8080/docs/api/org/apache/catalina/manager/JMXProxyServlet.html
+[+] http://10.10.180.84:8080/docs/api/org/apache/catalina/tribes/package-summary.html
+[+] http://10.10.180.84:8080/docs/api/org/apache/juli/package-summary.html
+[+] http://10.10.180.84:8080/docs/appdev/
+[+] http://10.10.180.84:8080/docs/appdev/build.xml.txt
+[+] http://10.10.180.84:8080/docs/appdev/deployment.html
+[+] http://10.10.180.84:8080/docs/appdev/index.html
+[+] http://10.10.180.84:8080/docs/appdev/installation.html
+[+] http://10.10.180.84:8080/docs/appdev/introduction.html
+[+] http://10.10.180.84:8080/docs/appdev/mailto:craigmcc@apache.org
+[+] http://10.10.180.84:8080/docs/appdev/processes.html
+[-] http://10.10.180.84:8080/docs/appdev/sample/
+[-] http://10.10.180.84:8080/docs/appdev/sample/sample.war
+[+] http://10.10.180.84:8080/docs/appdev/source.html
+[+] http://10.10.180.84:8080/docs/appdev/web.xml.txt
+[+] http://10.10.180.84:8080/docs/apr.html
+[+] http://10.10.180.84:8080/docs/architecture/index.html
+[+] http://10.10.180.84:8080/docs/architecture/mailto:fhanik@apache.org
+[+] http://10.10.180.84:8080/docs/architecture/mailto:jfarcand@apache.org
+[+] http://10.10.180.84:8080/docs/architecture/mailto:yoavs@apache.org
+[+] http://10.10.180.84:8080/docs/architecture/overview.html
+[+] http://10.10.180.84:8080/docs/architecture/requestProcess.html
+[+] http://10.10.180.84:8080/docs/architecture/startup.html
+[+] http://10.10.180.84:8080/docs/balancer-howto.html
+[+] http://10.10.180.84:8080/docs/building.html
+[+] http://10.10.180.84:8080/docs/cgi-howto.html
+[+] http://10.10.180.84:8080/docs/changelog.html
+[+] http://10.10.180.84:8080/docs/class-loader-howto.html
+[-] http://10.10.180.84:8080/docs/cluster-howto.html
+[+] http://10.10.180.84:8080/docs/comments.html
+[-] http://10.10.180.84:8080/docs/config/
+[-] http://10.10.180.84:8080/docs/config/ajp.html
+[+] http://10.10.180.84:8080/docs/config/automatic-deployment.html
+[+] http://10.10.180.84:8080/docs/config/cluster-channel.html
+[+] http://10.10.180.84:8080/docs/config/cluster-deployer.html
+[+] http://10.10.180.84:8080/docs/config/cluster-interceptor.html
+[+] http://10.10.180.84:8080/docs/config/cluster-listener.html
+[+] http://10.10.180.84:8080/docs/config/cluster-manager.html
+[+] http://10.10.180.84:8080/docs/config/cluster-membership.html
+[+] http://10.10.180.84:8080/docs/config/cluster-receiver.html
+[+] http://10.10.180.84:8080/docs/config/cluster-sender.html
+[+] http://10.10.180.84:8080/docs/config/cluster-valve.html
+[+] http://10.10.180.84:8080/docs/config/cluster.html
+[+] http://10.10.180.84:8080/docs/config/context.html
+[+] http://10.10.180.84:8080/docs/config/cookie-processor.html
+[+] http://10.10.180.84:8080/docs/config/credentialhandler.html
+[+] http://10.10.180.84:8080/docs/config/engine.html
+[+] http://10.10.180.84:8080/docs/config/executor.html
+[-] http://10.10.180.84:8080/docs/config/filter.html
+[+] http://10.10.180.84:8080/docs/config/globalresources.html
+[+] http://10.10.180.84:8080/docs/config/host.html
+[+] http://10.10.180.84:8080/docs/config/http.html
+[+] http://10.10.180.84:8080/docs/config/http2.html
+[+] http://10.10.180.84:8080/docs/config/index.html
+[+] http://10.10.180.84:8080/docs/config/jar-scan-filter.html
+[+] http://10.10.180.84:8080/docs/config/jar-scanner.html
+[+] http://10.10.180.84:8080/docs/config/jaspic.html
+[+] http://10.10.180.84:8080/docs/config/listeners.html
+[+] http://10.10.180.84:8080/docs/config/loader.html
+[+] http://10.10.180.84:8080/docs/config/manager.html
+[+] http://10.10.180.84:8080/docs/config/realm.html
+[+] http://10.10.180.84:8080/docs/config/resources.html
+[+] http://10.10.180.84:8080/docs/config/server.html
+[+] http://10.10.180.84:8080/docs/config/service.html
+[+] http://10.10.180.84:8080/docs/config/sessionidgenerator.html
+[+] http://10.10.180.84:8080/docs/config/systemprops.html
+[-] http://10.10.180.84:8080/docs/config/valve.html
+[+] http://10.10.180.84:8080/docs/connectors.html
+[+] http://10.10.180.84:8080/docs/default-servlet.html
+[+] http://10.10.180.84:8080/docs/deployer-howto.html
+[+] http://10.10.180.84:8080/docs/developers.html
+[+] http://10.10.180.84:8080/docs/elapi/index.html
+[+] http://10.10.180.84:8080/docs/extras.html
+[+] http://10.10.180.84:8080/docs/funcspecs/fs-admin-apps.html
+[+] http://10.10.180.84:8080/docs/funcspecs/fs-admin-objects.html
+[+] http://10.10.180.84:8080/docs/funcspecs/fs-admin-opers.html
+[+] http://10.10.180.84:8080/docs/funcspecs/fs-default.html
+[+] http://10.10.180.84:8080/docs/funcspecs/fs-jdbc-realm.html
+[+] http://10.10.180.84:8080/docs/funcspecs/fs-jndi-realm.html
+[+] http://10.10.180.84:8080/docs/funcspecs/fs-memory-realm.html
+[+] http://10.10.180.84:8080/docs/funcspecs/index.html
+[+] http://10.10.180.84:8080/docs/funcspecs/mbean-names.html
+[+] http://10.10.180.84:8080/docs/host-manager-howto.html
+[+] http://10.10.180.84:8080/docs/html-host-manager-howto.html
+[+] http://10.10.180.84:8080/docs/html-manager-howto.html
+[+] http://10.10.180.84:8080/docs/images/docs-stylesheet.css
+[+] http://10.10.180.84:8080/docs/index.html
+[+] http://10.10.180.84:8080/docs/introduction.html
+[+] http://10.10.180.84:8080/docs/jasper-howto.html
+[+] http://10.10.180.84:8080/docs/jdbc-pool.html
+[-] http://10.10.180.84:8080/docs/jndi-datasource-examples-howto.html
+[+] http://10.10.180.84:8080/docs/jndi-resources-howto.html
+[+] http://10.10.180.84:8080/docs/jspapi/index.html
+[+] http://10.10.180.84:8080/docs/logging.html
+[+] http://10.10.180.84:8080/docs/manager-howto.html
+[+] http://10.10.180.84:8080/docs/maven-jars.html
+[+] http://10.10.180.84:8080/docs/mbeans-descriptors-howto.html
+[+] http://10.10.180.84:8080/docs/mbeans-descriptors.dtd
+[-] http://10.10.180.84:8080/docs/monitoring.html
+[+] http://10.10.180.84:8080/docs/proxy-howto.html
+[+] http://10.10.180.84:8080/docs/realm-howto.html
+[+] http://10.10.180.84:8080/docs/rewrite.html
+[+] http://10.10.180.84:8080/docs/security-howto.html
+[+] http://10.10.180.84:8080/docs/security-manager-howto.html
+[+] http://10.10.180.84:8080/docs/servletapi/index.html
+[+] http://10.10.180.84:8080/docs/setup.html
+[+] http://10.10.180.84:8080/docs/ssi-howto.html
+[-] http://10.10.180.84:8080/docs/ssl-howto.html
+[+] http://10.10.180.84:8080/docs/tribes/developers.html
+[+] http://10.10.180.84:8080/docs/tribes/faq.html
+[+] http://10.10.180.84:8080/docs/tribes/interceptors.html
+[+] http://10.10.180.84:8080/docs/tribes/introduction.html
+[+] http://10.10.180.84:8080/docs/tribes/membership.html
+[+] http://10.10.180.84:8080/docs/tribes/setup.html
+[+] http://10.10.180.84:8080/docs/tribes/status.html
+[+] http://10.10.180.84:8080/docs/tribes/transport.html
+[+] http://10.10.180.84:8080/docs/virtual-hosting-howto.html
+[+] http://10.10.180.84:8080/docs/web-socket-howto.html
+[+] http://10.10.180.84:8080/docs/websocketapi/index.html
+[+] http://10.10.180.84:8080/docs/windows-auth-howto.html
+[+] http://10.10.180.84:8080/docs/windows-service-howto.html
+[-] http://10.10.180.84:8080/examples/
+[+] http://10.10.180.84:8080/examples/async/async2
+[+] http://10.10.180.84:8080/examples/async/async3
+[+] http://10.10.180.84:8080/examples/jsp
+[-] http://10.10.180.84:8080/examples/jsp/
+[-] http://10.10.180.84:8080/examples/jsp/jsp2/el/implicit-objects.jsp?foo=_arachni_trainer_681483a51dbecbde231ec4d1cbb3e2a9
+[+] http://10.10.180.84:8080/examples/servlets
+[+] http://10.10.180.84:8080/examples/servlets/
+[+] http://10.10.180.84:8080/examples/servlets/cookies.html
+[+] http://10.10.180.84:8080/examples/servlets/helloworld.html
+[-] http://10.10.180.84:8080/examples/servlets/nonblocking/bytecounter
+[+] http://10.10.180.84:8080/examples/servlets/nonblocking/bytecounter.html
+[+] http://10.10.180.84:8080/examples/servlets/nonblocking/numberwriter
+[+] http://10.10.180.84:8080/examples/servlets/reqheaders.html
+[+] http://10.10.180.84:8080/examples/servlets/reqinfo.html
+[+] http://10.10.180.84:8080/examples/servlets/reqparams.html
+[-] http://10.10.180.84:8080/examples/servlets/servlet/CookieExample
+[+] http://10.10.180.84:8080/examples/servlets/servlet/HelloWorldExample
+[-] http://10.10.180.84:8080/examples/servlets/servlet/RequestHeaderExample
+[-] http://10.10.180.84:8080/examples/servlets/servlet/RequestInfoExample
+[-] http://10.10.180.84:8080/examples/servlets/servlet/RequestInfoExample/Arachni-681483a51dbecbde231ec4d1cbb3e2a9
+[+] http://10.10.180.84:8080/examples/servlets/servlet/RequestParamExample
+[+] http://10.10.180.84:8080/examples/servlets/servlet/SessionExample
+[+] http://10.10.180.84:8080/examples/servlets/sessions.html
+[+] http://10.10.180.84:8080/examples/websocket/chat.xhtml
+[+] http://10.10.180.84:8080/examples/websocket/drawboard.xhtml
+[+] http://10.10.180.84:8080/examples/websocket/echo.xhtml
+[+] http://10.10.180.84:8080/examples/websocket/index.xhtml
+[+] http://10.10.180.84:8080/examples/websocket/snake.xhtml
+[+] http://10.10.180.84:8080/favicon.ico
+[-] http://10.10.180.84:8080/host-manager/html
+[-] http://10.10.180.84:8080/manager/html
+[+] http://10.10.180.84:8080/manager/status
+[+] http://10.10.180.84:8080/tomcat.css
+
+[~] Total: 163
+[+] Without issues: 140
+[-] With issues: 23 ( 14% )
+
+[~] Report saved at: /reports/arachni_dast_14.afr [0.77MB]
+[~] The scan has logged errors: /var/lib/gems/2.1.0/gems/arachni-1.4/logs/error-1.log
+
+[~] Audited 176 pages.
+
+[~] Duration: 00:05:00
+[~] Processed 80547/80597 HTTP requests.
+[~] -- 388.229 requests/second.
+[~] Processed 0/0 browser jobs.
+[~] -- 0.0 second/job.
+
+[~] Currently auditing          http://10.10.180.84:8080/examples/async/async2
+[~] Burst response time sum     100.076 seconds
+[~] Burst response count        50
+[~] Burst average response time 2.002 seconds
+[~] Burst average               0.969 requests/second
+[~] Timed-out requests          2
+[~] Original max concurrency    20
+[~] Throttled max concurrency   2
+
+++ pwd
++ docker run --rm -w /reports -v /home/jenkins/workspace/dev-sample-security/kj_dev_pipeline_java/arachni_reports:/reports danmx/docker-arachni-cli arachni_reporter arachni_dast_14.afr --reporter=json:outfile=arachni_dast_14.json
+Arachni - Web Application Security Scanner Framework v1.4
+   Author: Tasos "Zapotek" Laskos <tasos.laskos@arachni-scanner.com>
+
+           (With the support of the community and the Arachni Team.)
+
+   Website:       http://arachni-scanner.com
+   Documentation: http://arachni-scanner.com/wiki
+
+
+
+[*] JSON: Dumping audit results in arachni_dast_14.json.
+[*] JSON: Done!
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // parallel
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (stop-remove-containers)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ ./docker-compose down
+Stopping javavuln                     ...
+Stopping kj_dev_pipeline_java_mysql_1 ...
+[2A[2K
+Stopping javavuln                     ... [32mdone[0m
+[2B[1A[2K
+Stopping kj_dev_pipeline_java_mysql_1 ... [32mdone[0m
+[1BRemoving javavuln                     ...
+Removing kj_dev_pipeline_java_mysql_1 ...
+[1A[2K
+Removing kj_dev_pipeline_java_mysql_1 ... [32mdone[0m
+[1B[2A[2K
+Removing javavuln                     ... [32mdone[0m
+[2B[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (upload-scan-artefacts)
+[Pipeline] script
+[Pipeline] {
+[Pipeline] withCredentials
+[Pipeline] {
+[Pipeline] sh
++ AWS_ACCESS_KEY_ID=****
++ AWS_SECRET_ACCESS_KEY=****
++ AWS_DEFAULT_REGION=us-east-1
+[Pipeline] sh
+[Pipeline] s3Upload
+Uploading file:/home/jenkins/workspace/dev-sample-security/kj_dev_pipeline_java/fortify_sast_14.xml to s3://dso-lab-2018appseco/jobs/dev-sample-security/dev-pipeline-java/
+Upload complete
+[Pipeline] s3Upload
+Uploading file:/home/jenkins/workspace/dev-sample-security/kj_dev_pipeline_java/fortify_sast_14.xlsx to s3://dso-lab-2018appseco/jobs/dev-sample-security/dev-pipeline-java/
+Upload complete
+[Pipeline] s3Upload
+Uploading file:/home/jenkins/workspace/dev-sample-security/kj_dev_pipeline_java/retirejs_sast_14.json to s3://dso-lab-2018appseco/jobs/dev-sample-security/dev-pipeline-java/
+Upload complete
+[Pipeline] s3Upload
+Uploading file:/home/jenkins/workspace/dev-sample-security/kj_dev_pipeline_java/arachni_reports/arachni_dast_14.json to s3://dso-lab-2018appseco/jobs/dev-sample-security/dev-pipeline-java/
+Upload complete
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+Finished: Uploading to dso-lab-2018appseco/jobs/dev-sample-security/dev-pipeline-java/fortify_sast_14.xml
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

@@ -15,7 +15,15 @@ pipeline {
         JIRA_URL= "https://dsolab.atlassian.net"
         JAVA_PATH = "**/*.java"
         PROJECT = "DL"
+        USER_PREFIX = "KJ-"
     }
+
+    // builds and archives four files:
+    //    arachni_dast_${BUILD}.json
+    //    retirejs_sast_${BUILD}.json
+    //    fortify_sast_${BUILD}.xml
+    //    fortify_sast_${BUILD}.xlsx - built from fortify_sast_${BUILD}.xml via fxml2xlsx.py script
+
 
     stages {
 
