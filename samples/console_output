@@ -11,18 +11,24 @@ Running on jenkins-slave in /home/jenkins/workspace/dev-sample-security/kj_dev_p
 [Pipeline] {
 [Pipeline] stage
 [Pipeline] { (build-container)
-[Pipeline] git
-using credential d07e0ae8-8656-469c-8675-2193ff67fde0
+
+// *********************************************************************************
+// Is this the GIT credential from https://github.com/dsolaborg ?
+// The build job has a GitHub Project->GitHub Connection to Agra GitLab but the
+// project is hosted on https://github.com/dsolaborg/JavaVulnerableLab.git
+// *********************************************************************************
+
+[Pipeline] git using credential d07e0ae8-8656-469c-8675-2193ff67fde0
+
+// ***********************************************************************
+// This is coming from https://github.com/dsolaborg/JavaVulnerableLab.git
+// ***********************************************************************
+
 Fetching changes from the remote Git repository
 Checking out Revision c5080d53e5da2b8e1823f2bd2b35842b04fbca92 (refs/remotes/origin/master)
 Commit message: "Update build.sh"
-[Pipeline] sh
-+ sh build.sh
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
 
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
-100 1660k  100 1660k    0     0  1660k      0  0:00:01 --:--:--  0:00:01 22.8M
+
  > git rev-parse --is-inside-work-tree # timeout=10
  > git config remote.origin.url git@github.com:dsolaborg/JavaVulnerableLab.git # timeout=10
 Fetching upstream changes from git@github.com:dsolaborg/JavaVulnerableLab.git
@@ -37,7 +43,19 @@ using GIT_SSH to set credentials
  > git branch -D master # timeout=10
  > git checkout -b master c5080d53e5da2b8e1823f2bd2b35842b04fbca92 # timeout=10
  > git rev-list --no-walk c5080d53e5da2b8e1823f2bd2b35842b04fbca92 # timeout=10
-DEPRECATION: Python 2.7 will reach the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 won't be maintained after that date. A future version of pip will drop support for Python 2.7.
+
+// ****************************************************
+// Moved these lines down to align with build.sh output
+// build.sh installs the awscli
+// ****************************************************
+
+[Pipeline] sh
++ sh build.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100 1660k  100 1660k    0     0  1660k      0  0:00:01 --:--:--  0:00:01 22.8MDEPRECATION: Python 2.7 will reach the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 won't be maintained after that date. A future version of pip will drop support for Python 2.7.
 Collecting pip
   Using cached https://files.pythonhosted.org/packages/46/dc/7fd5df840efb3e56c8b4f768793a237ec4ee59891959d6a215d63f727023/pip-19.0.1-py2.py3-none-any.whl
 Installing collected packages: pip
@@ -59,6 +77,11 @@ Requirement already satisfied: python-dateutil<3.0.0,>=2.1 in /usr/lib/python2.7
 Requirement already satisfied: pyasn1>=0.1.3 in /usr/lib/python2.7/site-packages (from rsa<=3.5.0,>=3.1.2->awscli) (0.1.9)
 Requirement already satisfied: futures<4.0.0,>=2.2.0 in /usr/lib/python2.7/site-packages (from s3transfer<0.2.0,>=0.1.12->awscli) (3.0.5)
 Requirement already satisfied: six>=1.5 in /usr/lib/python2.7/site-packages (from python-dateutil<3.0.0,>=2.1->botocore==1.10.79->awscli) (1.9.0)
+
+// *******************************************************************************************************
+// Log into AWS ECR Docker Image Repo - these commands comes from the pipeline script build_container stage
+// *******************************************************************************************************
+
 ++ aws ecr get-login --no-include-email --region us-east-1
 + docker login -u AWS -p eyJwYXlsb2FkIjoiV0QyckZnRTFYRHRubTJVTmlYMEZVN3ppeGZDSDVuVW1PL2hSQU9pcHJ1ZU1VQkVDbjVOL0FTQWVmY3RIMThkUk5pdE1sWWZwcmVqQURZL0RGSm80R3laQ0xaV3RxZHF6emlzOUo2ZjRWY2tRalFRam95a3dGdkRocVUwT2kwRjdZbVhLeUlGWGIwTkt4ZWtReFA2QU1uWnFEQ29ROWtaeFdnNncrVDgrN1d5NXptVkNFMjNhbXNIQ0hSTHV1S2FSSXRxUjF5Y1pzOWs3VjVIMmVSSDhSN05LYTBHMXdkQ09oWE9VS0pPMWtMckdjTGM3UUpldzErTnVNNlEzaUhuOHExcExTa095Zk8zUFZ3dXIzclJ2R29ra2tYczVmSzM0dzVmNGg0emduQjhqRi9hMDU5WVFKUndNbGJ5WDg4SXE0UUI2MTdOTDhlbGJBMUUyK3dSQmo2THkxUWpBUkJ4amFscDJmUS9zR2dRNjZOOHE0Zi9ZMkl6bDU3WFdqMThaSlpjZ3pKUXltNXd0ZTFQSTlSL1RhbDd4Ym5BVnJoNUJWKzYzZC8zYkZyWlkwVDMvT1lMN1NwYVp2bG1IS1F6NmlibkEzMGU1ODIwUk1aVDVITmxFRzQyTDFsa2x6a1o1UU0vNWpkc1Z1ekRvMjgwdGFndWFWYm44M1NlTW0yMUsxS1ZYNjg2dXlmazM0TnJaeEx0WXh0aElLR0U0VTdZS0R2R0M4VWhOdUdxRVdQU3UyVVZ4cGdSRnFXaHZQRWw5dEFSSzJ1blN1aFd4dHFBaWxQbFYxaWhrQ2ZweU52UEhPWi92L3VQYTNwTkZUMU5YeUdWN2d0aHlSbGNVNHJyYU4zZ3NSeDdLZmYyS2ZkNXo1dzJHWmFBWXpSNk82dHRlTkNzaDVrZTZwYUZCK0VGQytQYTJHWXBnMWNmZ1V1bUZUSFB5ZGh3ekwzTTJ3Nlo0NDA2MnYzaTNURzE1WWlhTHhtM3JUWVY4RmR0RVJ0RkNwNXVRcTNiVmpvekMycVlDakdzWGlRMFAvRytYL3hNbjdNMzRPdWFkOG9Cdi9jMDhTK1JWS2pDaGNDR3V5a3hyVm92RzduRVVObjZ3RVZqSitFaUZLeWZ2ZzFGbk5ENC9sNk5teXF6bnM5QldGOXoxejlncndlL2hXbkRoR1N4UTJRVHVvSHFGUUZXbmlCdGxXOHdzVTc1TXgrVVlaSVZzdG1ISEpHUlZ6VkN5R1AzYTBEMFhDN3Y0MURJZGlGcXQrL296UGZ3eXhzaTluWHU4YVFJMFQ2aE1rZ0ZzUm5adUFzSXR2YWxMeHVyazhta1lBVFZoQVNvR2VOQWVIRlZIU1ZnRVNzU3Z6bFdJWUtmOU5vSENuck1vN2U1aHRnM1AxQ3ZmMUhxRjBLQU9PL1RmZzN1blduSWZZZ2tXL0ZkYWRER2J0Y1o2L1NCZG5mVGJKUnhmeDVHcHprcVp1Q1EzMFhQRWpJbmFXZzhFZ2hqR2JrRk1UeGNWeTN0V0tnPT0iLCJkYXRha2V5IjoiQVFFQkFIaHdtMFlhSVNKZVJ0Sm01bjFHNnVxZWVrWHVvWFhQZTVVRmNlOVJxOC8xNHdBQUFINHdmQVlKS29aSWh2Y05BUWNHb0c4d2JRSUJBREJvQmdrcWhraUc5dzBCQndFd0hnWUpZSVpJQVdVREJBRXVNQkVFRENzdysvSTdTMnJaazhSQXJBSUJFSUE3ZW15dDluTFA3Y0VycFZQMFRMUjhFUm5uSW9nQjhETzNHQXVoWSt2L2x3YWFaYmVBWFNsekI0TS9hbTJ5Nkdhdy9kckRWbGFjQWtEc3FsOD0iLCJ2ZXJzaW9uIjoiMiIsInR5cGUiOiJEQVRBX0tFWSIsImV4cGlyYXRpb24iOjE1NDk1Mjg2NDh9 https://757687274468.dkr.ecr.us-east-1.amazonaws.com
 WARNING! Using --password via the CLI is insecure. Use --password-stdin.
