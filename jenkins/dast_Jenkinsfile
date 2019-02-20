@@ -27,7 +27,6 @@ pipeline {
         }
         stage('SonarQube') {
             environment {
-                //scannerHome = tool 'SuperSonarQube'
                 SCANNER_URL = 'http://192.168.0.25:8888'
             }
             steps {
