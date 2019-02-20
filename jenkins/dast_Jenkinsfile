@@ -30,7 +30,7 @@ pipeline {
                 scannerHome = tool 'SuperSonarQube'
             }
             steps {
-               sh 'mvn sonar:sonar -Dsonar.host.url=${env.SONARQUBE_HOST}"'
+               sh 'mvn sonar:sonar -Dsonar.host.url=${env.SONARQUBE_HOST}'
             }
         }
         stage('OWASP ZAP Scan') {
