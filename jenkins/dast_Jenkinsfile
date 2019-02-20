@@ -33,20 +33,6 @@ pipeline {
                sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.0.25:8888'
             }
         }
-        stage('Deploy to Tomcat') {
-            steps {
-                unstash 'app'
-                sh 'curl --upload-file jspwiki-war/target/JSPWiki.war "http://jenkins:Dutchy7@192.168.0.25:8888/manager/text/deploy?path=/JSPWiki&update=true"'
-                //sh '/usr/bin/docker cp jspwiki-war/target/JSPWiki.war Tomcat:/usr/local/tomcat/webapps'
-            }
-        }/*
-        stage('Arachni scan') {
-            steps {
-                //arachniScanner checks: '*', format: 'html', url: 'http://172.17.0.2:7373', userConfig: [filename: '']
-                arachniScanner checks: '*', scope: [pageLimit: 3], url: 'http://wakandanation.zapto.org:5588/JSPWiki', userConfig: [filename: ''], format: 'json'
-               //sh '/home/arachni-1.5.1-0.5.12/bin/arachni http://wakandanation.zapto.org:5588/JSPWiki'
-            }
-        }*/
         stage('OWASP ZAP Scan') {
                 steps {
                     sh 'echo Scanning with OWASP ZAP'
