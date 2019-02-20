@@ -27,10 +27,11 @@ pipeline {
         }
         stage('SonarQube') {
             environment {
-                scannerHome = tool 'SuperSonarQube'
+                //scannerHome = tool 'SuperSonarQube'
+                SCANNER_URL = 'http://192.168.0.25:8888'
             }
             steps {
-               sh 'mvn sonar:sonar -Dsonar.host.url=${env.SONARQUBE_HOST}'
+               sh 'mvn sonar:sonar -Dsonar.host.url=${env.SCANNER_URL}'
             }
         }
         stage('OWASP ZAP Scan') {
