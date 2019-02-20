@@ -1,0 +1,72 @@
+pipeline {
+    agent {
+        docker {
+            image 'maven:3-alpine'
+            args '-v /root/.m2:/root/.m2'
+        }
+    }
+    stages {
+       stage('Build') {
+            steps {
+                sh 'mvn -B -DskipTests package'
+                stash includes: 'jspwiki-war/target/*.war', name: 'app'
+                sh 'mvn clean'
+            }
+        }/*
+        stage('Unit Test') {
+            steps {
+                sh 'mvn test'
+            }
+            post {
+                success {
+                    junit 'jspwiki-war/target/surefire-reports/*.xml'
+                }
+            }
+        }*/
+        stage('Source Code Analysis') {
+            steps {
+                dependencyCheckAnalyzer datadir: '/home/hirosh7/OWASP_NVD_Updates', hintsFile: '',
+                includeCsvReports: false, includeHtmlReports: true, includeJsonReports: false,
+                includeVulnReports: false, isAutoupdateDisabled: true, outdir: '.', scanpath: '.',
+                skipOnScmChange: false, skipOnUpstreamChange: false, suppressionFile: '', zipExtensions: ''
+            }
+            post {
+               always {
+                    dependencyCheckPublisher canComputeNew: false, defaultEncoding: '', healthy: '',
+                    pattern: '**/dependency-check-report.xml', unHealthy: ''
+               }
+           }
+        }
+        stage('SonarQube') {
+            environment {
+                scannerHome = tool 'SuperSonarQube'
+            }
+            steps {
+               //withSonarQubeEnv('SuperSonarQube') {
+               //      sh ' ${scannerHome}/bin/sonar-scanner'
+                     // sh 'mvn sonar:sonar'
+               //}
+               sh 'mvn clean deploy sonar:sonar -Dsonar.host.url=http://192.168.0.25:8888'
+            }
+        }
+        stage('Deploy to Tomcat') {
+            steps {
+                unstash 'app'
+                sh 'curl --upload-file jspwiki-war/target/JSPWiki.war "http://jenkins:Dutchy7@192.168.0.25:8888/manager/text/deploy?path=/JSPWiki&update=true"'
+                //sh '/usr/bin/docker cp jspwiki-war/target/JSPWiki.war Tomcat:/usr/local/tomcat/webapps'
+            }
+        }/*
+        stage('Arachni scan') {
+            steps {
+                //arachniScanner checks: '*', format: 'html', url: 'http://172.17.0.2:7373', userConfig: [filename: '']
+                arachniScanner checks: '*', scope: [pageLimit: 3], url: 'http://wakandanation.zapto.org:5588/JSPWiki', userConfig: [filename: ''], format: 'json'
+               //sh '/home/arachni-1.5.1-0.5.12/bin/arachni http://wakandanation.zapto.org:5588/JSPWiki'
+            }
+        }*/
+        stage('OWASP ZAP Scan') {
+                steps {
+                    sh 'echo Scanning with OWASP ZAP'
+                }
+        }
+    }
+}
