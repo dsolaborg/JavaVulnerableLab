@@ -32,6 +32,13 @@ pipeline {
             steps {
                sh 'mvn sonar:sonar -Dsonar.host.url=${SCANNER_URL}'
             }
+            post {
+               always {
+                  timeout(time: 2, unit: 'MINUTES') {
+                         waitForQualityGate abortPipeline: true
+                  }
+               }
+            }
         }
         stage('OWASP ZAP Scan') {
                 steps {
