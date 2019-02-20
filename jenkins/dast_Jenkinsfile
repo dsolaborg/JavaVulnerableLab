@@ -11,7 +11,7 @@ pipeline {
                 sh 'mvn -B -DskipTests package'
             }
         }
-        stage('Source Code Analysis') {
+        stage('Software Composition Analysis') {
             steps {
                 dependencyCheckAnalyzer datadir: '/home/hirosh7/OWASP_NVD_Updates', hintsFile: '',
                 includeCsvReports: false, includeHtmlReports: true, includeJsonReports: false,
