@@ -30,7 +30,9 @@ pipeline {
                 SCANNER_URL = 'http://192.168.0.25:8888'
             }
             steps {
-               sh 'mvn sonar:sonar -Dsonar.host.url=${SCANNER_URL}'
+               withSonarQubeEnv('SuperSonarQube') {
+                   sh 'mvn sonar:sonar -Dsonar.host.url=${SCANNER_URL}'
+               }
             }
             post {
                always {
