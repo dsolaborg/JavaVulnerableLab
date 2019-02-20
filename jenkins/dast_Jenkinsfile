@@ -25,7 +25,7 @@ pipeline {
                }
            }
         }
-        stage('SonarQube') {
+        stage('SonarQube Analysis') {
             environment {
                 SCANNER_URL = 'http://192.168.0.25:8888'
             }
@@ -34,13 +34,11 @@ pipeline {
                    sh 'mvn sonar:sonar -Dsonar.host.url=${SCANNER_URL}'
                }
             }
-            post {
-               always {
-                  timeout(time: 2, unit: 'MINUTES') {
-                         waitForQualityGate abortPipeline: true
-                  }
-               }
-            }
+        }
+        stage('SonarQube Q-Gate Check') {
+             timeout(time: 2, unit: 'MINUTES') {
+                  waitForQualityGate abortPipeline: true
+             }
         }
         stage('OWASP ZAP Scan') {
                 steps {
