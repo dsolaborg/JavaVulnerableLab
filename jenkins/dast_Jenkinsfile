@@ -36,9 +36,11 @@ pipeline {
             }
         }
         stage('SonarQube Q-Gate Check') {
+           steps {
              timeout(time: 2, unit: 'MINUTES') {
                   waitForQualityGate abortPipeline: true
              }
+           }
         }
         stage('OWASP ZAP Scan') {
                 steps {
