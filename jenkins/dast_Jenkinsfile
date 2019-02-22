@@ -6,6 +6,11 @@ pipeline {
         }
     }
     stages {
+        stage('Status - Build Start') {
+            steps {
+                slackSend color: '#439FE0', message: "Starting Job: ${env.JOB_NAME} (build ${env.BUILD_NUMBER})"
+            }
+        }
        stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests package'
@@ -30,9 +35,11 @@ pipeline {
                 SCANNER_URL = 'http://192.168.0.25:8888'
             }
             steps {
+                slackSend color: '#439FE0', message: "Starting SAST scan with SonarQube"
                withSonarQubeEnv('Jenkins SonarQube') {
                    sh 'mvn sonar:sonar -Dsonar.host.url=${SCANNER_URL}'
                }
+                slackSend color: '#439FE0', message: "Scan Complete)"
             }
         }
         stage('SonarQube Q-Gate Check') {
@@ -42,7 +49,7 @@ pipeline {
              }
            }
         }
-        stage('Slack Update') {
+        stage('Status - Build Complete') {
             steps {
                 slackSend color: '#439FE0', message: "${env.JOB_NAME} - Build Complete"
             }
