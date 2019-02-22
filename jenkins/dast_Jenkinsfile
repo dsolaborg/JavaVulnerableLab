@@ -35,7 +35,7 @@ pipeline {
         }
         stage('SonarQube Analysis') {
             environment {
-                SCANNER_URL = 'http://192.168.0.25:8888'
+                SCANNER_URL = 'http://192.168.0.25:888'
             }
             steps {
                 slackSend color: '#439FE0', message: "Starting SAST scan with SonarQube"
@@ -44,6 +44,13 @@ pipeline {
                }
                 slackSend color: '#439FE0', message: "Scan Complete"
             }
+            post {
+                success {
+                    slackSend color: '#439FE0', message: "Scan completed successfully"
+                }
+                failure {
+                    slackSend color: '#439FE0', message: "Scan Failed "
+                }
         }
         stage('SonarQube Q-Gate Check') {
            steps {
