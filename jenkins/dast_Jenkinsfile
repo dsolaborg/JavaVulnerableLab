@@ -42,6 +42,11 @@ pipeline {
              }
            }
         }
+        stage('Update to Slack') {
+            steps {
+                slackSend color: '#439FE0', message: 'Yabba Dabba Doo', token: 'SKoklc8CxgvUelO6vQOz7dDx'
+            }
+        }
         stage('OWASP ZAP Scan') {
                 steps {
                     sh 'echo Scanning with OWASP ZAP'
