@@ -44,8 +44,7 @@ pipeline {
         }
         stage('Slack Update') {
             steps {
-                slackSend color: '#439FE0', message: '${env.JOB_NAME} - Build Complete'
-                echo "Running the job ${env.JOB_NAME}"
+                slackSend color: '#439FE0', message: "${env.JOB_NAME} - Build Complete"
             }
         }
         stage('OWASP ZAP Scan') {
