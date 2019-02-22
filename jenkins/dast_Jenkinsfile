@@ -39,7 +39,7 @@ pipeline {
                withSonarQubeEnv('Jenkins SonarQube') {
                    sh 'mvn sonar:sonar -Dsonar.host.url=${SCANNER_URL}'
                }
-                slackSend color: '#439FE0', message: "Scan Complete)"
+                slackSend color: '#439FE0', message: "Scan Complete"
             }
         }
         stage('SonarQube Q-Gate Check') {
