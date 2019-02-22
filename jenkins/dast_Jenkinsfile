@@ -51,6 +51,7 @@ pipeline {
                 failure {
                     slackSend color: '#439FE0', message: "Scan Failed "
                 }
+            }
         }
         stage('SonarQube Q-Gate Check') {
            steps {
