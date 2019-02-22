@@ -42,9 +42,9 @@ pipeline {
              }
            }
         }
-        stage('Update to Slack') {
+        stage('Slack Update') {
             steps {
-                slackSend color: '#439FE0', message: 'Yabba Dabba Doo'
+                slackSend color: '#439FE0', message: '${env.JOB_NAME} - Build Complete'
             }
         }
         stage('OWASP ZAP Scan') {
