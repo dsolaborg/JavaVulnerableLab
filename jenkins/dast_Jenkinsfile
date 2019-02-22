@@ -24,10 +24,13 @@ pipeline {
                 skipOnScmChange: false, skipOnUpstreamChange: false, suppressionFile: '', zipExtensions: ''
             }
             post {
-               always {
-                    dependencyCheckPublisher canComputeNew: false, defaultEncoding: '', healthy: '',
+                always {
+                     dependencyCheckPublisher canComputeNew: false, defaultEncoding: '', healthy: '',
                     pattern: '**/dependency-check-report.xml', unHealthy: ''
-               }
+                }
+                failure {
+                    slackSend color: '#439FE0', message: "Failed during SCA stage"
+                }
            }
         }
         stage('SonarQube Analysis') {
