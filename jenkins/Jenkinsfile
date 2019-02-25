@@ -42,14 +42,13 @@ pipeline {
                withSonarQubeEnv('Jenkins SonarQube') {
                    sh 'mvn sonar:sonar -Dsonar.host.url=${SCANNER_URL}'
                }
-                slackSend color: '#439FE0', message: "Scan Complete"
             }
             post {
                 success {
-                    slackSend color: '#439FE0', message: "Scan completed successfully"
+                    slackSend color: '#439FE0', message: "SAST scan completed successfully"
                 }
                 failure {
-                    slackSend color: '#439FE0', message: "Scan Failed "
+                    slackSend color: '#439FE0', message: "SAST scan Failed "
                 }
             }
         }
