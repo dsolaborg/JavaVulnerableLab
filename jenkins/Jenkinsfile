@@ -47,7 +47,7 @@ pipeline {
             }
             post {
                 success {
-                    slackSend color: '#439FE0', message: "SAST scan completed successfully"
+                    slackSend color: '#00ff00', message: "SAST scan completed successfully"
                 }
                 failure {
                     slackSend color: '#ff0000', message: "SAST scan Failed "
