@@ -9,7 +9,7 @@ pipeline {
         stage('Status - Build Start') {
             steps {
                 // #800080 = purple
-                slackSend color: '#800080', message: "Starting Job: ${env.JOB_NAME} (build ${env.BUILD_NUMBER})"
+                slackSend color: '#800080', message: "Starting Job: ${env.JOB_NAME} (Build ${env.BUILD_NUMBER})"
             }
         }
        stage('Build') {
