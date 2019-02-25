@@ -8,7 +8,8 @@ pipeline {
     stages {
         stage('Status - Build Start') {
             steps {
-                slackSend color: '#439FE0', message: "Starting Job: ${env.JOB_NAME} (build ${env.BUILD_NUMBER})"
+                // #800080 = purple
+                slackSend color: '#800080', message: "Starting Job: ${env.JOB_NAME} (build ${env.BUILD_NUMBER})"
             }
         }
        stage('Build') {
@@ -29,7 +30,8 @@ pipeline {
                     pattern: '**/dependency-check-report.xml', unHealthy: ''
                 }
                 failure {
-                    slackSend color: '#439FE0', message: "Failed during SCA stage"
+                    // #ff0000 = red
+                    slackSend color: '#ff0000', message: "Failed during SCA stage"
                 }
            }
         }
@@ -48,7 +50,7 @@ pipeline {
                     slackSend color: '#439FE0', message: "SAST scan completed successfully"
                 }
                 failure {
-                    slackSend color: '#439FE0', message: "SAST scan Failed "
+                    slackSend color: '#ff0000', message: "SAST scan Failed "
                 }
             }
         }
@@ -61,7 +63,7 @@ pipeline {
         }
         stage('Status - Build Complete') {
             steps {
-                slackSend color: '#439FE0', message: "${env.JOB_NAME} - Build Complete"
+                slackSend color: '#00ff00', message: "${env.JOB_NAME} - Build Complete"
             }
         }
         stage('OWASP ZAP Scan') {
