@@ -1,0 +1,159 @@
+// Pipeline script from kj_dev_pipeline_java job
+
+pipeline {
+    agent { label 'jenkins-slave' }
+
+    // parameters {
+    //    string(description: 'Short name of the user', name: 'USERNAME')
+    //    string(description: 'Email of the user', name: 'EMAIL')
+    // }
+
+    environment {
+        PATH = "~/.local/bin:$PATH"
+        IMAGE = "757687274468.dkr.ecr.us-east-1.amazonaws.com/owasp/glue"
+        GIT = "git@github.com:dsolaborg/JavaVulnerableLab.git"
+        JIRA_URL= "https://dsolab.atlassian.net"
+        JAVA_PATH = "**/*.java"
+        PROJECT = "DL"
+        USER_PREFIX = "KJ-"
+    }
+
+    // builds and archives four files:
+    //    arachni_dast_${BUILD}.json
+    //    retirejs_sast_${BUILD}.json
+    //    fortify_sast_${BUILD}.xml
+    //    fortify_sast_${BUILD}.xlsx - built from fortify_sast_${BUILD}.xml via fxml2xlsx.py script
+
+
+    stages {
+
+        stage ('build-container') {
+            steps {
+                git credentialsId: 'd07e0ae8-8656-469c-8675-2193ff67fde0', url: """$GIT"""
+                sh '''
+                sh build.sh
+                $(aws ecr get-login --no-include-email --region us-east-1) 
+                docker images
+                '''
+            }
+        }
+
+        stage ('sast-scan') {
+            parallel {
+                stage ('sast-fe-scan-retirejs') {
+                    steps {
+                        script {
+                            withCredentials([usernamePassword(credentialsId: 'jira-svc',
+                                    usernameVariable: 'USERNAME',
+                                    passwordVariable: 'PASSWORD')])
+                                    {
+                                        sh """
+                                 docker run 757687274468.dkr.ecr.us-east-1.amazonaws.com/owasp/glue -t retirejs -f json >> retirejs_tmp_${BUILD_NUMBER}.json 2>&1
+                                 #--jira-api-url $JIRA_URL
+                                 #--jira-username $USERNAME
+                                 #--jira-password $PASSWORD
+                                 #--jira-project $PROJECT
+                                 """
+                                        sh """awk '/{"task":"RetireJS"/{i++}i' retirejs_tmp_${BUILD_NUMBER}.json >> retirejs_sast_${BUILD_NUMBER}.json"""
+                                    }
+                        }
+                    }
+                }
+
+                stage ('sast-be-fortify-scan') {
+                    steps {
+                        script {
+
+                            sh """
+                            PATH=$PATH:~/Fortify/bin
+                            FPR_FILE=fortify_\$BUILD_NUMBER.fpr
+                            sourceanalyzer -b build -clean
+                            sourceanalyzer -b build ${JAVA_PATH}
+                            sourceanalyzer -b build  -scan -f "\$FPR_FILE"
+                            echo xxx_FILENAME_xxx "\$FPR_FILE"
+                            
+                            
+                            ReportGenerator -format xml -f fortify_sast_\$BUILD_NUMBER.xml -source "\$FPR_FILE" -template DeveloperWorkbook.xml
+                            python fxml2xlsx.py --input fortify_sast_\$BUILD_NUMBER.xml --format xlsx --output fortify_sast_\$BUILD_NUMBER.xlsx
+                            """
+                        }
+                    }
+                }
+            }
+        }
+
+        stage ('start-application-8080') {
+            steps {
+                script {
+                    sh """
+                     curl -L "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-\$(uname -s)-\$(uname -m)" -o docker-compose
+                     chmod +x docker-compose
+                     ./docker-compose up -d
+                     """
+                }
+            }
+        }
+
+        stage ('dast-scan') {
+            parallel {
+                stage ('dast-scan-arachni') {
+                    steps {
+                        script {
+                            withCredentials([usernamePassword(credentialsId: 'jira-svc',
+                                    usernameVariable: 'USERNAME',
+                                    passwordVariable: 'PASSWORD')])
+                                    {
+                                        sh """
+                                IP="\$(curl http://169.254.169.254/latest/meta-data/local-ipv4)"
+                                docker run --rm -w /reports -v \$(pwd)/arachni_reports:/reports danmx/docker-arachni-cli arachni http://\$IP:8080 --report-save-path arachni_dast_${BUILD_NUMBER}.afr --output-only-positives --timeout 00:05:00
+                                docker run --rm -w /reports -v \$(pwd)/arachni_reports:/reports danmx/docker-arachni-cli arachni_reporter arachni_dast_${BUILD_NUMBER}.afr --reporter=json:outfile=arachni_dast_${BUILD_NUMBER}.json
+                                """
+                                    }
+                        }
+                    }
+                }
+            }
+        }
+
+        stage ('stop-remove-containers') {
+            steps {
+                script {
+                    sh """
+                        #docker stop arachni
+                        #docker rm arachni
+                        ./docker-compose down
+                        """
+                }
+            }
+        }
+        stage ('upload-scan-artefacts') {
+            steps {
+                script {
+                    withCredentials([[
+                                             $class: 'AmazonWebServicesCredentialsBinding',
+                                             credentialsId: 'dso-deployer-terraform',
+                                             accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                                             secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                                     ]]) {
+                        sh """
+                              AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+                              AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+                              AWS_DEFAULT_REGION=us-east-1
+                            """
+                        sh """
+                            chown \$USER:\$USER -R arachni_reports/*
+                            """
+                        s3Upload acl: 'AuthenticatedRead', bucket: 'dso-lab-2018appseco', cacheControl: '', file: """fortify_sast_${BUILD_NUMBER}.xml""", metadatas: [''], path: """jobs/dev-sample-security/dev-pipeline-java/""", sseAlgorithm: '', workingDir: ''
+                        s3Upload acl: 'AuthenticatedRead', bucket: 'dso-lab-2018appseco', cacheControl: '', file: """fortify_sast_${BUILD_NUMBER}.xlsx""", metadatas: [''], path: """jobs/dev-sample-security/dev-pipeline-java/""", sseAlgorithm: '', workingDir: ''
+                        s3Upload acl: 'AuthenticatedRead', bucket: 'dso-lab-2018appseco', cacheControl: '', file: """retirejs_sast_${BUILD_NUMBER}.json""", metadatas: [''], path: """jobs/dev-sample-security/dev-pipeline-java/""", sseAlgorithm: '', workingDir: ''
+                        s3Upload acl: 'AuthenticatedRead', bucket: 'dso-lab-2018appseco', cacheControl: '', file: """arachni_reports/arachni_dast_${BUILD_NUMBER}.json""", metadatas: [''], path: """jobs/dev-sample-security/dev-pipeline-java/""", sseAlgorithm: '', workingDir: ''
+
+                        //sh "rm {*.xml,*.json,*.fpr,*.xlsx,*.html} 2> /dev/null"
+                        //sh "rm arachni_reports/*"
+
+                    }
+                }
+            }
+        }
+    }
+}
