@@ -6,11 +6,6 @@ pipeline {
         }
     }
     stages {
-        stage('Status - Build Start') {
-            steps {
-                slackSend color: '#439FE0', message: "Starting Job: ${env.JOB_NAME} (build ${env.BUILD_NUMBER})"
-            }
-        }
        stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests package'
@@ -24,13 +19,10 @@ pipeline {
                 skipOnScmChange: false, skipOnUpstreamChange: false, suppressionFile: '', zipExtensions: ''
             }
             post {
-                always {
-                     dependencyCheckPublisher canComputeNew: false, defaultEncoding: '', healthy: '',
+               always {
+                    dependencyCheckPublisher canComputeNew: false, defaultEncoding: '', healthy: '',
                     pattern: '**/dependency-check-report.xml', unHealthy: ''
-                }
-                failure {
-                    slackSend color: '#439FE0', message: "Failed during SCA stage"
-                }
+               }
            }
         }
         stage('SonarQube Analysis') {
@@ -38,18 +30,9 @@ pipeline {
                 SCANNER_URL = 'http://192.168.0.25:8888'
             }
             steps {
-                slackSend color: '#439FE0', message: "Starting SAST scan with SonarQube"
                withSonarQubeEnv('Jenkins SonarQube') {
                    sh 'mvn sonar:sonar -Dsonar.host.url=${SCANNER_URL}'
                }
-            }
-            post {
-                success {
-                    slackSend color: '#439FE0', message: "Scan completed successfully"
-                }
-                failure {
-                    slackSend color: '#439FE0', message: "Scan Failed "
-                }
             }
         }
         stage('SonarQube Q-Gate Check') {
@@ -58,11 +41,6 @@ pipeline {
                   waitForQualityGate abortPipeline: true
              }
            }
-        }
-        stage('Status - Build Complete') {
-            steps {
-                slackSend color: '#439FE0', message: "${env.JOB_NAME} - Build Complete"
-            }
         }
         stage('OWASP ZAP Scan') {
                 steps {
