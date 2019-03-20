@@ -35,32 +35,32 @@ pipeline {
                 }
            }
         }
-        stage('SonarQube Analysis') {
-            environment {
-                SCANNER_URL = 'http://192.168.0.25:8888'
-            }
-            steps {
-                slackSend color: '#439FE0', message: "Starting SAST scan with SonarQube"
-               withSonarQubeEnv('Jenkins SonarQube') {
-                   sh 'mvn sonar:sonar -Dsonar.host.url=${SCANNER_URL}'
-               }
-            }
-            post {
-                success {
-                    slackSend color: '#00ff00', message: "SAST scan completed successfully"
-                }
-                failure {
-                    slackSend color: '#ff0000', message: "SAST scan Failed "
-                }
-            }
-        }
-        stage('SonarQube Q-Gate Check') {
-           steps {
-             timeout(time: 2, unit: 'MINUTES') {
-                  waitForQualityGate abortPipeline: true
-             }
-           }
-        }
+//        stage('SonarQube Analysis') {
+//            environment {
+//                SCANNER_URL = 'http://192.168.0.25:8888'
+//            }
+//            steps {
+//                slackSend color: '#439FE0', message: "Starting SAST scan with SonarQube"
+//               withSonarQubeEnv('Jenkins SonarQube') {
+//                   sh 'mvn sonar:sonar -Dsonar.host.url=${SCANNER_URL}'
+//               }
+//            }
+//            post {
+//                success {
+//                    slackSend color: '#00ff00', message: "SAST scan completed successfully"
+//                }
+//                failure {
+//                    slackSend color: '#ff0000', message: "SAST scan Failed "
+//                }
+//            }
+//        }
+//        stage('SonarQube Q-Gate Check') {
+//           steps {
+//             timeout(time: 2, unit: 'MINUTES') {
+//                  waitForQualityGate abortPipeline: true
+//             }
+//           }
+//        }
         stage('Status - Build Complete') {
             steps {
                 slackSend color: '#00ff00', message: "${env.JOB_NAME} - Build Complete"
